@@ -1,0 +1,21 @@
+{
+  "unit": {
+    "number": "28",
+    "title": "Sustainable Energy",
+    "qualification": "Pearson BTEC International Level 3 Applied Science"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "source_code": "A.P1", "criterion_text": "Describe the sources and uses of oil, coal and natural gas.", "level": "PASS" },
+    { "criterion_code": "P2", "source_code": "A.P2", "criterion_text": "Describe how the use of fossil fuels impacts human health and the environment.", "level": "PASS" },
+    { "criterion_code": "P3", "source_code": "B.P3", "criterion_text": "Describe the technologies used to generate renewable energy.", "level": "PASS" },
+    { "criterion_code": "P4", "source_code": "B.P4", "criterion_text": "Describe the advantages and disadvantages of using nuclear fuels.", "level": "PASS" },
+    { "criterion_code": "P5", "source_code": "C.P5", "criterion_text": "Describe the social, environmental and financial advantages of increasing use of renewable energy.", "level": "PASS" },
+    { "criterion_code": "P6", "source_code": "C.P6", "criterion_text": "Describe the disadvantages of increasing use of renewable energy.", "level": "PASS" },
+    { "criterion_code": "M1", "source_code": "A.M1", "criterion_text": "Explain how the use of fossil fuels affects human health and the environment.", "level": "MERIT" },
+    { "criterion_code": "M2", "source_code": "B.M2", "criterion_text": "Explain and compare the efficiency of different renewable energy sources.", "level": "MERIT" },
+    { "criterion_code": "M3", "source_code": "C.M3", "criterion_text": "Compare the social, environmental and financial advantages and disadvantages of using nuclear energy and biofuels as energy sources.", "level": "MERIT" },
+    { "criterion_code": "D1", "source_code": "A.D1", "criterion_text": "Evaluate the impact of fossil fuels on human health and the environment.", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "source_code": "B.D2", "criterion_text": "Evaluate the factors that affect the efficiency of methods used to generate energy.", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "source_code": "C.D3", "criterion_text": "Evaluate the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power.", "level": "DISTINCTION" }
+  ]
+}

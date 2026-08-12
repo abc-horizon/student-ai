@@ -1,0 +1,119 @@
+{
+  "unit": {
+    "number": "28",
+    "title": "Sustainable Energy",
+    "qualification": "Pearson BTEC International Level 3 Applied Science"
+  },
+  "usage_note": "This file contains official assignment context, task instructions and evidence checklists copied from the official assignment briefs. It supports interpretation of the expected learner evidence. It must not replace the official assessment criteria or be used to invent additional assessment criteria.",
+  "sections": [
+    {
+      "section": "A",
+      "learning_aim": "Explore the environmental impact of continued use of fossil fuels.",
+      "assignment_title": "Impact of use of fossil fuels",
+      "applies_to": ["P1", "P2", "M1", "D1"],
+      "vocational_scenario": "You are on work experience with a green energy technology company. In response to the large number of extreme weather events being seen locally, nationally and internationally, you have been asked to provide a factual report, blog or information leaflet to inform the public about the sources, uses, environmental and health impact of coal, oil and gas. The material may be used for broadcast and as part of a display in the foyer of the station.",
+      "task_introduction": "Provide publicity materials that describe, explain and evaluate the sources and uses of fossil fuels and the impact they have on human health.",
+      "task_requirements": [
+        "Describe where coal, oil and gas come from.",
+        "Describe, explain and evaluate the environmental impact of the extraction and use of coal, oil and gas and how their use can have an impact on human health."
+      ],
+      "content_to_consider": {
+        "extraction": [
+          "Sources of coal, oil and natural gas.",
+          "Surface and underground mining.",
+          "Offshore and onshore drilling.",
+          "Hydraulic fracturing."
+        ],
+        "uses": [
+          "Power generation.",
+          "As a fuel for transport, cooking and heating.",
+          "As a base for the production of other materials.",
+          "Coking coal, carbon fibre, activated carbon, coal tar and its by-products.",
+          "Crude oil and its by-products.",
+          "As a base for feedstock and pharmaceutical products."
+        ],
+        "environmental_and_ecological_effects": [
+          "Emission of heat-trapping gases: carbon dioxide, methane and water vapour.",
+          "Global warming.",
+          "The greenhouse effect.",
+          "Rise in sea levels.",
+          "Risk of earthquakes.",
+          "Leakage of fracking fluids.",
+          "Substantial use of water."
+        ],
+        "effect_on_climate": [
+          "Risk of drought.",
+          "Heatwaves.",
+          "Intensified storms."
+        ],
+        "effect_on_human_health": [
+          "Toxic air pollutants such as mercury, sulfur dioxide, nitrous oxides, lead and arsenic.",
+          "Volatile organic compounds.",
+          "Particulates."
+        ]
+      },
+      "general_requirements": ["Correct scientific terminology must be used.", "Sources must be referenced."],
+      "checklist_of_evidence_required": [
+        "Publicity materials that evaluate and explain the impact and use of fossil fuels on human health and the environment.",
+        "Publicity materials that describe the sources and uses of coal, oil and natural gas.",
+        "Publicity materials that describe how the use of fossil fuels impacts on human health and the environment."
+      ]
+    },
+    {
+      "section": "B",
+      "learning_aim": "Explore the generation of electricity from alternative fuel sources.",
+      "assignment_title": "Alternative energy sources",
+      "applies_to": ["P3", "P4", "M2", "D2"],
+      "vocational_scenario": "Your workplace mentor was impressed with the information about the use and impact of fossil fuels that you produced. She has now requested that you provide additional information materials for the display in the hallway and to give to visitors to the station that describe, explain, compare and evaluate alternative technologies and their efficiency as energy sources.",
+      "task_introduction": "There are many ways of generating electricity. You must provide publicity materials that meet the following requirements.",
+      "task_requirements": [
+        "Evaluate factors that affect the economic and operational efficiency of energy generation of renewable energy sources. This will include costs relating to building and generator construction, operating and maintenance, fuels and environmental damage. These factors have to be balanced in relation to the value of the electrical energy generated.",
+        "Discuss and evaluate advances in technology that allow more efficient generation of energy in relation to cost. Examples could include turbine blade design and improvements in battery technology to store energy from intermittent energy sources like wind, solar and waves.",
+        "Explain how the levelised cost of electricity (LCOE) is calculated to take into account factors that affect energy generation.",
+        "Compare the efficiency of renewable energy sources to fossil fuels and nuclear power.",
+        "Provide illustrated publicity materials that clearly describe how technology is being used to generate renewable energy using solar, wind, water and biomass as fuels.",
+        "Describe the advantages and disadvantages of using nuclear fuel as a source of energy.",
+        "Consider and describe sustainability, cost, risks to the environment and the safe disposal of radioactive waste."
+      ],
+      "general_requirements": ["Correct scientific terminology must be used.", "Sources must be referenced."],
+      "checklist_of_evidence_required": [
+        "An evaluation of factors that affect the efficiency of energy generation.",
+        "An explanation and comparison of the efficiency of different renewable energy sources.",
+        "A description of the technologies used to generate renewable energy.",
+        "A description of the advantages and disadvantages of using nuclear fuels."
+      ]
+    },
+    {
+      "section": "C",
+      "learning_aim": "Compare the social, environmental and financial benefits and advantages of the use of renewable energy with the disadvantages.",
+      "assignment_title": "Benefits and disadvantages of the use of renewable energy",
+      "applies_to": ["P5", "P6", "M3", "D3"],
+      "vocational_scenario": "The information materials you have produced for the green energy company you have been on placement with have been well received. You have now been asked to investigate and provide additional information materials that compare social, environmental and financial benefits and advantages of the increasing use of renewable energy with the disadvantages.",
+      "task_introduction": "Many people are interested in the advantages and disadvantages of social, environmental and financial factors associated with the increasing use of renewable energy. Your information materials must describe, compare and evaluate public perceptions relating to these issues.",
+      "social_environmental_and_financial_factors": [
+        "Investment costs.", "Operating costs.", "Disposal of waste products.", "Pollution.",
+        "Consistency or inconsistency of supply.", "Storage of raw material.", "Efficiency.",
+        "Impact of the installation.", "Amount of land required.", "Change of habitat.",
+        "Harm to wildlife.", "Transport.", "Use of fertilizer or pesticides.", "Need for water.",
+        "Noise impact.", "Visual impact."
+      ],
+      "task_requirements": [
+        "Evaluate the benefits and disadvantages or detrimental effects of the increasing use of solar energy.",
+        "Evaluate the benefits and disadvantages or detrimental effects of the increasing use of wind energy.",
+        "Evaluate the benefits and disadvantages or detrimental effects of the increasing use of hydroelectric energy.",
+        "Evaluate the benefits and disadvantages or detrimental effects of the increasing use of biomass energy.",
+        "Evaluate the benefits and disadvantages or detrimental effects of the increasing use of geothermal energy.",
+        "Include a conclusion about the most effective renewable energy resource.",
+        "Provide reasons to justify the conclusion.",
+        "Include a comparison of the social, environmental and financial advantages and disadvantages of nuclear energy and biofuels as energy sources.",
+        "Include a description of the advantages and disadvantages of renewable energy in relation to social, environmental and financial factors for at least two of the following energy sources: solar, wind, hydroelectric, tidal or wave, biofuels and geothermal."
+      ],
+      "general_requirements": ["Correct scientific terminology must be used.", "Sources must be referenced."],
+      "checklist_of_evidence_required": [
+        "An evaluation of the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power.",
+        "A comparison of the social, environmental and financial advantages and disadvantages of using nuclear energy and biofuels as energy sources.",
+        "A description of the social, environmental and financial advantages and disadvantages of increasing use of renewable energy."
+      ]
+    }
+  ]
+}

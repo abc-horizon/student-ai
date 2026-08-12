@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(curl.exe -s -o NUL -w \"%{http_code} -> %{redirect_url}`n\" \"http://localhost:4000/lti/login?iss=https://lms.abchorizon.com&login_hint=test123\")"
+    ]
+  }
+}

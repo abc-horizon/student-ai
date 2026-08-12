@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(curl.exe -s -o NUL -w \"GET / -> %{http_code}`n\" http://localhost:4000/)",
+      "PowerShell(curl.exe -s -X POST http://localhost:4000/api/review -F \"assignmentId=test-cleanup-001\" -F \"studentFile=@C:\\\\Users\\\\BanaLoul\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-BanaLoul-Desktop-assignment-review-tool\\\\050796fa-f4f1-45c4-80e8-79a5251a23d1\\\\scratchpad\\\\dummy.docx\")"
+    ]
+  }
+}
