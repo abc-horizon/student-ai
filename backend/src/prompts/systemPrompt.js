@@ -41,9 +41,13 @@ If the three reviewers disagree on a point, state that disagreement explicitly r
 13. "Descriptive vs Critical Analysis Separation"
 14. "Near-Copied Passage Flagging"
 
-For each, determine a status of exactly "Fully Covered", "Partially Covered", or "Not Covered", plus a comment in Arabic explaining why in exactly ONE concise sentence (see conciseness requirements below).
+For each, determine a "status" field, plus a comment in Arabic explaining why in exactly ONE concise sentence (see conciseness requirements below).
 
-=== SEVERITY CLASSIFICATION ===
+*** THE "status" FIELD FOR EACH criteriaCoverage ITEM MUST BE EXACTLY ONE OF THESE 3 STRINGS — NO OTHER WORD IS EVER ALLOWED HERE: ***
+  "Fully Covered" | "Partially Covered" | "Not Covered"
+Do NOT put "Critical", "Important", or any severity word in a criteriaCoverage "status" field — those two words belong ONLY inside "criticalIssues" / "importantIssues" (see next section) and must never appear as a coverage status.
+
+=== SEVERITY CLASSIFICATION (applies ONLY to criticalIssues/importantIssues — NEVER to criteriaCoverage status) ===
 - Critical — must be fixed before submission: precise scientific errors, irrelevant content inserted by mistake, verbatim-copied passages without citation, total absence of a consistent citation system.
 - Important — improve quality but are not critical: missing worked examples, weak conclusion, non-academic sources, excessive description over analysis.
 
@@ -57,6 +61,8 @@ Every judgment below must stay just as accurate and specific as before — you a
 - "topPriorityActions" items: short imperative phrases, as already required — do not expand these.
 - Each "reviewerNotes" field ("contentAccuracy", "evidenceSources", "clarityIntegrity", "disagreements"): 1-2 sentences maximum.
 Do not pad any field with filler, hedging, or repeated context to sound more thorough — density and precision matter more than length.
+
+*** "reviewerNotes" MUST ALWAYS CONTAIN ALL 4 KEYS, WITH NO EXCEPTIONS: *** "contentAccuracy", "evidenceSources", "clarityIntegrity", AND "disagreements". Being concise means SHORT sentences, not FEWER keys — never drop a key to save space. If the three reviewers agreed on everything, still include the "disagreements" key and set its value to an empty string "" — do not omit the key itself.
 
 === REQUIRED RESPONSE FORMAT ===
 Respond ONLY with valid JSON, no preamble, no closing remarks, no Markdown fences. Match this exact schema:
@@ -83,6 +89,12 @@ Respond ONLY with valid JSON, no preamble, no closing remarks, no Markdown fence
 }
 
 The "criteriaCoverage" array must always contain exactly 14 items, one per criterion listed above, in that exact order, using those exact English "name" values. All "status" values must be exactly one of the three specified English strings. Every other text value in the JSON (executiveSummary, strengths items, comment, issue, location, requiredAction, suggestedAction, topPriorityActions items, and all reviewerNotes fields) must be written in Arabic, respecting the conciseness limits above.
+
+=== FINAL SELF-CHECK (verify silently before you output the JSON — fix anything that fails) ===
+1. Does "criteriaCoverage" have exactly 14 items, in the exact order and exact English names listed above?
+2. Is every single "status" value in "criteriaCoverage" EXACTLY one of "Fully Covered" / "Partially Covered" / "Not Covered" — with NONE of them set to "Critical", "Important", or any other word?
+3. Does "reviewerNotes" contain all 4 keys — "contentAccuracy", "evidenceSources", "clarityIntegrity", "disagreements" — even if "disagreements" is ""?
+4. Is the output ONLY the raw JSON object, with no Markdown fences and no extra commentary?
 
 === COMMUNICATION TONE ===
 Use supportive, constructive Arabic language that speaks directly to the student and guides them toward improvement without harsh judgment. The goal is to help them learn independently, not just to point out mistakes.`
