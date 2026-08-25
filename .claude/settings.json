@@ -2,7 +2,18 @@
   "permissions": {
     "allow": [
       "PowerShell(curl.exe -s -o NUL -w \"GET / -> %{http_code}`n\" http://localhost:4000/)",
-      "PowerShell(curl.exe -s -X POST http://localhost:4000/api/review -F \"assignmentId=test-cleanup-001\" -F \"studentFile=@C:\\\\Users\\\\BanaLoul\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-BanaLoul-Desktop-assignment-review-tool\\\\050796fa-f4f1-45c4-80e8-79a5251a23d1\\\\scratchpad\\\\dummy.docx\")"
+      "PowerShell(curl.exe -s -X POST http://localhost:4000/api/review -F \"assignmentId=test-cleanup-001\" -F \"studentFile=@C:\\\\Users\\\\BanaLoul\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-BanaLoul-Desktop-assignment-review-tool\\\\050796fa-f4f1-45c4-80e8-79a5251a23d1\\\\scratchpad\\\\dummy.docx\")",
+      "PowerShell(cd C:\\\\Users\\\\BanaLoul\\\\Desktop\\\\assignment-review-tool\\\\backend; $env:PORT=4124; node src\\\\server.js)",
+      "Bash(chromium-cli --help)",
+      "Bash(npx --yes playwright --version)",
+      "Read(//c/Users/BanaLoul/AppData/Local/Temp/claude/c--Users-BanaLoul-Desktop-assignment-review-tool/050796fa-f4f1-45c4-80e8-79a5251a23d1/scratchpad/pw-test/**)",
+      "Bash(npm install *)",
+      "Bash(node browser-test.mjs)",
+      "Bash(node browser-test-no-assignment-field.mjs)",
+      "Bash(node src/scripts/test-thinking-timing.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(node src/scripts/test-consistency-baseline.mjs 3 FIXED fixed)"
     ]
   }
 }
