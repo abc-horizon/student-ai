@@ -1,16 +1,18 @@
-// Example test (PowerShell):
-// curl.exe -X POST http://localhost:4000/api/review `
-//   -F "assignmentId=test-assignment-001" `
-//   -F "studentFile=@C:\path\to\sample.docx"
-// Note: requires a real ANTHROPIC_API_KEY in backend/.env (not just .env.example) to succeed end-to-end.
+// This route requires a real LTI launch — see backend/src/scripts/test-usage-limit.mjs and
+// test-lti-e2e-usage-limit.mjs for how to exercise it with a validly-signed launchToken
+// without needing a live Moodle instance.
+// Note: also requires a real ANTHROPIC_API_KEY in backend/.env (not just .env.example) to
+// succeed end-to-end.
 
 import { Router } from 'express'
 import multer from 'multer'
 import { validateFile, validateFileCount } from '../services/fileValidation.js'
 import { extractText } from '../services/textExtraction.js'
-import { hasBeenUsed, logUsage } from '../services/usageLimitService.js'
+import { hasStudentUsedAssignment, recordStudentUsage } from '../services/ltiUsageTrackingService.js'
+import { verifyLaunchToken } from '../services/launchTokenService.js'
 import { reviewAssignment } from '../services/aiReviewService.js'
 import { buildReport } from '../services/reportBuilder.js'
+import { getAssignmentBrief } from '../services/moodleApiService.js'
 
 const router = Router()
 
@@ -19,14 +21,31 @@ const upload = multer({ storage: multer.memoryStorage() })
 const uploadFields = upload.fields([{ name: 'studentFile', maxCount: 1 }])
 
 router.post('/', uploadFields, async (req, res) => {
-  const assignmentId = req.body?.assignmentId
-  if (!assignmentId || !assignmentId.trim()) {
-    return res.status(400).json({ error: 'assignmentId is required.', errorCode: 'ASSIGNMENT_ID_REQUIRED' })
+  // The student's identity and which assignment this is are NEVER taken from client-supplied
+  // text — only from this cryptographically-signed token, produced by our own /lti/launch
+  // after verifying the real Moodle id_token. A request with no launch session at all can't
+  // be tied to a real student+assignment, so it's rejected rather than falling back to some
+  // shared/default identity (which would defeat the one-use-per-assignment guarantee).
+  const launchToken = req.body?.launchToken
+  if (!launchToken) {
+    return res.status(401).json({ error: 'A valid LTI launch session is required.', errorCode: 'INVALID_LAUNCH_TOKEN' })
   }
 
-  if (hasBeenUsed(assignmentId)) {
+  let studentId, assignmentId
+  try {
+    const payload = await verifyLaunchToken(launchToken)
+    if (!payload.studentId || !payload.assignmentId) {
+      throw new Error('Launch token is missing studentId/assignmentId.')
+    }
+    studentId = payload.studentId
+    assignmentId = payload.assignmentId
+  } catch {
+    return res.status(401).json({ error: 'Invalid or expired LTI launch session.', errorCode: 'INVALID_LAUNCH_TOKEN' })
+  }
+
+  if (hasStudentUsedAssignment(studentId, assignmentId)) {
     return res.status(403).json({
-      error: 'This tool has already been used on this assignment. It can only be used once per assignment.',
+      error: 'لقد استخدمت هذه الأداة من قبل لهذا الواجب.',
       errorCode: 'USAGE_LIMIT_EXCEEDED',
     })
   }
@@ -49,11 +68,17 @@ router.post('/', uploadFields, async (req, res) => {
     return res.status(400).json({ error: studentResult.warning, errorCode: studentResult.warningCode })
   }
 
+  // Best-effort: getAssignmentBrief() never throws — any failure (wrong Moodle instance, no
+  // token configured, network/timeout, ambiguous assignment) resolves to null, and the review
+  // proceeds with an empty brief exactly as it always has. See moodleApiService.js.
+  const [, contextId, resourceLinkId] = /^lti:([^:]+):([^:]+)$/.exec(assignmentId) || []
+  const assignmentBrief = contextId ? await getAssignmentBrief({ courseId: contextId, resourceLinkId }) : null
+
   let aiResult
   try {
     aiResult = await reviewAssignment({
       studentText: studentResult.text,
-      briefText: '',
+      briefText: assignmentBrief?.brief || '',
       rubricText: '',
     })
   } catch (err) {
@@ -68,7 +93,7 @@ router.post('/', uploadFields, async (req, res) => {
       .json({ error: 'The AI response did not pass validation: ' + reason, errorCode: 'REPORT_VALIDATION_FAILED' })
   }
 
-  logUsage(assignmentId)
+  recordStudentUsage(studentId, assignmentId)
 
   res.status(200).json(report)
 })

@@ -4,6 +4,7 @@ import path from 'path'
 import Database from 'better-sqlite3'
 import { importJWK, SignJWT, jwtVerify, createRemoteJWKSet } from 'jose'
 import { getOrCreateToolKeys } from '../services/ltiKeyService.js'
+import { verifyLaunchToken } from '../services/launchTokenService.js'
 
 const DATA_DIR = path.join(import.meta.dirname, '..', '..', 'data')
 const db = new Database(path.join(DATA_DIR, 'lti-state.db'))
@@ -99,6 +100,13 @@ ltiRouter.post('/launch', async (req, res) => {
   const studentName =
     payload.name || [payload.given_name, payload.family_name].filter(Boolean).join(' ') || 'Unknown Student'
 
+  // "sub" is the OIDC/LTI subject claim — a stable, unique identifier for this student on
+  // this platform. It's REQUIRED by the LTI 1.3 spec, unlike name/email which may be withheld.
+  const studentId = payload.sub
+  if (!studentId) {
+    return res.status(400).type('text/plain').send('The id_token is missing the required "sub" claim.')
+  }
+
   const deploymentId = payload[LTI_CLAIM_DEPLOYMENT_ID]
   const contextId = payload[LTI_CLAIM_CONTEXT]?.id
   const resourceLinkId = payload[LTI_CLAIM_RESOURCE_LINK]?.id
@@ -109,7 +117,7 @@ ltiRouter.post('/launch', async (req, res) => {
   const { privateJwk, kid } = await getOrCreateToolKeys()
   const privateKey = await importJWK(privateJwk, 'RS256')
 
-  const launchToken = await new SignJWT({ assignmentId, studentName, purpose: 'lti-launch' })
+  const launchToken = await new SignJWT({ assignmentId, studentId, studentName, purpose: 'lti-launch' })
     .setProtectedHeader({ alg: 'RS256', kid })
     .setIssuedAt()
     .setExpirationTime('5m')
@@ -126,15 +134,8 @@ ltiApiRouter.get('/session', async (req, res) => {
   }
 
   try {
-    const { publicJwk } = await getOrCreateToolKeys()
-    const publicKey = await importJWK(publicJwk, 'RS256')
-    const { payload } = await jwtVerify(token, publicKey)
-
-    if (payload.purpose !== 'lti-launch') {
-      throw new Error('Unexpected token purpose')
-    }
-
-    res.json({ assignmentId: payload.assignmentId, studentName: payload.studentName })
+    const payload = await verifyLaunchToken(token)
+    res.json({ assignmentId: payload.assignmentId, studentId: payload.studentId, studentName: payload.studentName })
   } catch {
     res.status(401).json({ error: 'Invalid or expired launch session.' })
   }

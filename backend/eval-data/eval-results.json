@@ -1,0 +1,739 @@
+{
+  "generatedAt": "2026-08-24T08:29:16.696Z",
+  "sampleNote": "Sample = 3 confirmed student submissions with matching CSV ground truth (Pass, Merit, Pass). No Distinction-grade sample is available — see README note in this script header. D3 has zero positive ground-truth cases in this sample (no student achieved it), so D3 accuracy reflects only the tool's ability to correctly say \"not achieved\", not its ability to recognize a real D3.",
+  "methodologyNote": "The tool's student-facing report (reviewAssignment) uses 14 generic criteria, not the 12 BTEC codes directly. Per-criterion P1-D3 comparison uses a separate eval-only AI pass (evaluateBtecCriteria) that reuses the real RAG coverage map but is not part of the product the student sees.",
+  "overallAccuracy": 0.9722222222222222,
+  "overallMatches": 35,
+  "overallTotal": 36,
+  "overallLevelBreakdown": {
+    "PASS": {
+      "total": 18,
+      "matches": 18,
+      "accuracy": 1
+    },
+    "MERIT": {
+      "total": 9,
+      "matches": 9,
+      "accuracy": 1
+    },
+    "DISTINCTION": {
+      "total": 9,
+      "matches": 8,
+      "accuracy": 0.8888888888888888
+    }
+  },
+  "students": [
+    {
+      "student": "MAHMOUD AL KHALED",
+      "file": "Assignment CoverSheet - SE.docx",
+      "instructorGrade": "Pass",
+      "accuracy": 1,
+      "matches": 12,
+      "total": 12,
+      "levelBreakdown": {
+        "PASS": {
+          "total": 6,
+          "matches": 6,
+          "accuracy": 1
+        },
+        "MERIT": {
+          "total": 3,
+          "matches": 3,
+          "accuracy": 1
+        },
+        "DISTINCTION": {
+          "total": 3,
+          "matches": 3,
+          "accuracy": 1
+        }
+      },
+      "comparisons": [
+        {
+          "code": "P1",
+          "level": "PASS",
+          "criterionText": "Describe the sources and uses of oil, coal and natural gas.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص مصادر واستخدامات النفط والفحم والغاز الطبيعي بشكل مفصل، بما في ذلك طرق الاستخراج والاستخدامات في الطاقة والصناعة."
+        },
+        {
+          "code": "P2",
+          "level": "PASS",
+          "criterionText": "Describe how the use of fossil fuels impacts human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص تأثيرات حرق الوقود الأحفوري على البيئة (الغازات الدفيئة، تغير المناخ) وصحة الإنسان (أمراض الجهاز التنفسي والقلب) بشكل واضح."
+        },
+        {
+          "code": "P3",
+          "level": "PASS",
+          "criterionText": "Describe the technologies used to generate renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص تقنيات توليد الطاقة المتجددة مثل الألواح الشمسية وتوربينات الرياح والطاقة المائية والكتلة الحيوية."
+        },
+        {
+          "code": "P4",
+          "level": "PASS",
+          "criterionText": "Describe the advantages and disadvantages of using nuclear fuels.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يذكر النص مزايا وعيوب الطاقة النووية بشكل منظم، بما في ذلك الكفاءة العالية والانبعاثات المنخفضة مقابل مخاطر الحوادث والنفايات المشعة."
+        },
+        {
+          "code": "P5",
+          "level": "PASS",
+          "criterionText": "Describe the social, environmental and financial advantages of increasing use of renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص المزايا الاجتماعية والبيئية والمالية للطاقة المتجددة مثل تقليل التلوث وخلق فرص عمل وتوفير التكاليف على المدى الطويل."
+        },
+        {
+          "code": "P6",
+          "level": "PASS",
+          "criterionText": "Describe the disadvantages of increasing use of renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص عيوب الطاقة المتجددة مثل عدم الاستقرار، الحاجة لمساحات كبيرة، القيود الجغرافية، وانخفاض كثافة الطاقة."
+        },
+        {
+          "code": "M1",
+          "level": "MERIT",
+          "criterionText": "Explain how the use of fossil fuels affects human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يشرح النص آليات تأثير الوقود الأحفوري على الصحة والبيئة، مثل ربط حرق الوقود بانبعاث الغازات الدفيئة وتغير المناخ، والملوثات المسببة للأمراض."
+        },
+        {
+          "code": "M2",
+          "level": "MERIT",
+          "criterionText": "Explain and compare the efficiency of different renewable energy sources.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يقدم النص مقارنة وصفية بين مصادر الطاقة المتجددة دون معايير كمية أو تحليل سببي واضح للكفاءة، فهو يكتفي بذكر خصائص عامة دون مقارنة منهجية."
+        },
+        {
+          "code": "M3",
+          "level": "MERIT",
+          "criterionText": "Compare the social, environmental and financial advantages and disadvantages of using nuclear energy and biofuels as energy sources.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يقارن النص بين الطاقة النووية والوقود الحيوي بشكل سطحي دون معايير محددة أو تحليل متوازن للمزايا والعيوب الاجتماعية والبيئية والمالية."
+        },
+        {
+          "code": "D1",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the impact of fossil fuels on human health and the environment.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص تأثيرات الوقود الأحفوري لكنه لا يزن الأدلة أو يحدد الأهمية النسبية أو يصل إلى حكم تقييمي واضح."
+        },
+        {
+          "code": "D2",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the factors that affect the efficiency of methods used to generate energy.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يذكر النص عوامل تؤثر على الكفاءة لكنه لا يقيمها أو يحدد أيها أكثر أهمية أو يصل إلى استنتاج مدعوم بالأدلة."
+        },
+        {
+          "code": "D3",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يعدد النص فوائد وعيوب الطاقة المتجددة لكنه لا يزنها ضد بعضها أو يحدد أولويات أو يصل إلى موقف تقييمي واضح."
+        }
+      ],
+      "realReportCriteriaCoverage": [
+        {
+          "id": 1,
+          "name": "Task Achievement",
+          "status": "Partially Covered",
+          "comment": "تمت تغطية معظم المتطلبات لكن بعض الأقسام مثل التقييم والتحليل النقدي غير مكتملة."
+        },
+        {
+          "id": 2,
+          "name": "Assessment Criteria Coverage",
+          "status": "Partially Covered",
+          "comment": "تمت تغطية معايير النجاح بشكل جيد، لكن معايير الاستحقاق والتميز تحتاج إلى تعميق."
+        },
+        {
+          "id": 3,
+          "name": "Content Quality",
+          "status": "Fully Covered",
+          "comment": "المحتوى دقيق ومفصل ويغطي معظم جوانب الموضوع."
+        },
+        {
+          "id": 4,
+          "name": "Critical Thinking & Analysis",
+          "status": "Partially Covered",
+          "comment": "يوجد وصف جيد لكن التحليل النقدي والتقييم محدود."
+        },
+        {
+          "id": 5,
+          "name": "Organization & Structure",
+          "status": "Partially Covered",
+          "comment": "البنية غير متسقة، مع تكرار وفقرات غير مترابطة."
+        },
+        {
+          "id": 6,
+          "name": "Academic Writing",
+          "status": "Partially Covered",
+          "comment": "اللغة واضحة لكن هناك أخطاء إملائية ونحوية وتكرار."
+        },
+        {
+          "id": 7,
+          "name": "Evidence & Supporting Arguments",
+          "status": "Partially Covered",
+          "comment": "الأدلة موجودة لكن غير مدعومة ببيانات كمية أو دراسات حديثة."
+        },
+        {
+          "id": 8,
+          "name": "References & Citations",
+          "status": "Not Covered",
+          "comment": "الاستشهادات غير مكتملة وغير دقيقة، وبعض المراجع لا علاقة لها بالموضوع."
+        },
+        {
+          "id": 9,
+          "name": "Conceptual Confusion Detection",
+          "status": "Partially Covered",
+          "comment": "يوجد خلط بين بعض المفاهيم مثل الوقود الحيوي والطاقة النووية."
+        },
+        {
+          "id": 10,
+          "name": "Worked Examples Presence",
+          "status": "Not Covered",
+          "comment": "لا توجد أمثلة محسوبة مثل حساب LCOE أو كفاءة الطاقة."
+        },
+        {
+          "id": 11,
+          "name": "Issue Severity Classification",
+          "status": "Partially Covered",
+          "comment": "تم تحديد بعض المشكلات لكن لم يتم تصنيفها بوضوح."
+        },
+        {
+          "id": 12,
+          "name": "Three-Reviewer Methodology Application",
+          "status": "Partially Covered",
+          "comment": "تم تطبيق المنهجية لكن النتائج لم تدمج بشكل كامل."
+        },
+        {
+          "id": 13,
+          "name": "Descriptive vs Critical Analysis Separation",
+          "status": "Partially Covered",
+          "comment": "الوصف يطغى على التحليل النقدي في معظم الأقسام."
+        },
+        {
+          "id": 14,
+          "name": "Near-Copied Passage Flagging",
+          "status": "Partially Covered",
+          "comment": "يوجد بعض الفقرات التي تبدو منقولة دون إعادة صياغة كافية."
+        }
+      ]
+    },
+    {
+      "student": "SAMI BEN AMEUR",
+      "file": "13-6-26 Assignment CoverSheet - SE-A.docx",
+      "instructorGrade": "Merit",
+      "accuracy": 0.9166666666666666,
+      "matches": 11,
+      "total": 12,
+      "levelBreakdown": {
+        "PASS": {
+          "total": 6,
+          "matches": 6,
+          "accuracy": 1
+        },
+        "MERIT": {
+          "total": 3,
+          "matches": 3,
+          "accuracy": 1
+        },
+        "DISTINCTION": {
+          "total": 3,
+          "matches": 2,
+          "accuracy": 0.6666666666666666
+        }
+      },
+      "comparisons": [
+        {
+          "code": "P1",
+          "level": "PASS",
+          "criterionText": "Describe the sources and uses of oil, coal and natural gas.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص مصادر واستخدامات الفحم والنفط والغاز الطبيعي بتفصيل واضح."
+        },
+        {
+          "code": "P2",
+          "level": "PASS",
+          "criterionText": "Describe how the use of fossil fuels impacts human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص تأثيرات الوقود الأحفوري على صحة الإنسان والبيئة بشكل شامل."
+        },
+        {
+          "code": "P3",
+          "level": "PASS",
+          "criterionText": "Describe the technologies used to generate renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص تقنيات توليد الطاقة المتجددة من الشمس والرياح والماء والكتلة الحيوية."
+        },
+        {
+          "code": "P4",
+          "level": "PASS",
+          "criterionText": "Describe the advantages and disadvantages of using nuclear fuels.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص مزايا وعيوب استخدام الوقود النووي بشكل واضح."
+        },
+        {
+          "code": "P5",
+          "level": "PASS",
+          "criterionText": "Describe the social, environmental and financial advantages of increasing use of renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص المزايا الاجتماعية والبيئية والمالية لزيادة استخدام الطاقة المتجددة."
+        },
+        {
+          "code": "P6",
+          "level": "PASS",
+          "criterionText": "Describe the disadvantages of increasing use of renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف النص عيوب زيادة استخدام الطاقة المتجددة مثل التقطع والتكلفة الأولية."
+        },
+        {
+          "code": "M1",
+          "level": "MERIT",
+          "criterionText": "Explain how the use of fossil fuels affects human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يشرح النص آليات تأثير الوقود الأحفوري على الصحة والبيئة مع روابط سببية."
+        },
+        {
+          "code": "M2",
+          "level": "MERIT",
+          "criterionText": "Explain and compare the efficiency of different renewable energy sources.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يقارن النص كفاءة مصادر الطاقة المتجددة باستخدام معايير مثل LCOE وعامل السعة."
+        },
+        {
+          "code": "M3",
+          "level": "MERIT",
+          "criterionText": "Compare the social, environmental and financial advantages and disadvantages of using nuclear energy and biofuels as energy sources.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يقارن النص الطاقة النووية والوقود الحيوي اجتماعياً وبيئياً ومالياً بجدول واضح."
+        },
+        {
+          "code": "D1",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the impact of fossil fuels on human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يقيم النص تأثير الوقود الأحفوري بموازنة الأدلة ويصل إلى حكم بأن الأضرار تفوق الفوائد."
+        },
+        {
+          "code": "D2",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the factors that affect the efficiency of methods used to generate energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يقيم النص العوامل المؤثرة في كفاءة توليد الطاقة مع تحديد الأهمية النسبية مثل LCOE وعامل السعة."
+        },
+        {
+          "code": "D3",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power.",
+          "instructorSaid": 0,
+          "toolSaid": 1,
+          "match": false,
+          "errorType": "false_positive",
+          "toolReason": "يقيم النص فوائد وأضرار الطاقة المتجددة ويخلص إلى أن المزيج الأمثل هو الحل."
+        }
+      ],
+      "realReportCriteriaCoverage": [
+        {
+          "id": 1,
+          "name": "Task Achievement",
+          "status": "Fully Covered",
+          "comment": "تمت تغطية جميع متطلبات المهمة الرئيسية بما في ذلك وصف المصادر والاستخدامات والتأثيرات."
+        },
+        {
+          "id": 2,
+          "name": "Assessment Criteria Coverage",
+          "status": "Fully Covered",
+          "comment": "تمت تغطية معايير P1-P6 وM1-M3 وD1-D3 بشكل كامل مع وجود بعض الضعف في التقييم النقدي."
+        },
+        {
+          "id": 3,
+          "name": "Content Quality",
+          "status": "Partially Covered",
+          "comment": "المحتوى دقيق وغني لكن يعاني من تكرار مفرط في الجزء الأول وبعض الفقرات الوصفية الطويلة."
+        },
+        {
+          "id": 4,
+          "name": "Critical Thinking & Analysis",
+          "status": "Partially Covered",
+          "comment": "يوجد تحليل جيد في الجزء الثاني والثالث لكن الجزء الأول يغلب عليه الوصف."
+        },
+        {
+          "id": 5,
+          "name": "Organization & Structure",
+          "status": "Partially Covered",
+          "comment": "الهيكل العام واضح لكن هناك تكرار في العناوين الفرعية وعدم ترقيم متسق للشكل."
+        },
+        {
+          "id": 6,
+          "name": "Academic Writing",
+          "status": "Partially Covered",
+          "comment": "الأسلوب أكاديمي لكن توجد أخطاء لغوية بسيطة وجمل طويلة تحتاج إلى تبسيط."
+        },
+        {
+          "id": 7,
+          "name": "Evidence & Supporting Arguments",
+          "status": "Fully Covered",
+          "comment": "تم استخدام مصادر حديثة وموثوقة مثل IRENA وIEA وBloombergNEF."
+        },
+        {
+          "id": 8,
+          "name": "References & Citations",
+          "status": "Partially Covered",
+          "comment": "المراجع موجودة لكن بعضها غير مكتمل أو لا يتبع تنسيقًا موحدًا، وهناك مراجع غير مستشهد بها في النص."
+        },
+        {
+          "id": 9,
+          "name": "Conceptual Confusion Detection",
+          "status": "Fully Covered",
+          "comment": "تم التمييز بوضوح بين الكفاءة الحرارية وعامل السعة، ولم يتم الخلط بين المفاهيم."
+        },
+        {
+          "id": 10,
+          "name": "Worked Examples Presence",
+          "status": "Partially Covered",
+          "comment": "توجد أمثلة عملية مثل أرقام LCOE وتكاليف البطاريات لكن تفتقر إلى حسابات تفصيلية خطوة بخطوة."
+        },
+        {
+          "id": 11,
+          "name": "Issue Severity Classification",
+          "status": "Fully Covered",
+          "comment": "تم تصنيف القضايا بشكل مناسب بين حرجة ومهمة."
+        },
+        {
+          "id": 12,
+          "name": "Three-Reviewer Methodology Application",
+          "status": "Fully Covered",
+          "comment": "تم تطبيق منهجية المراجعين الثلاثة بشكل كامل مع توثيق الاختلافات."
+        },
+        {
+          "id": 13,
+          "name": "Descriptive vs Critical Analysis Separation",
+          "status": "Partially Covered",
+          "comment": "الجزء الأول وصفي في الغالب بينما الجزءان الثاني والثالث أكثر تحليلية."
+        },
+        {
+          "id": 14,
+          "name": "Near-Copied Passage Flagging",
+          "status": "Partially Covered",
+          "comment": "تم رصد بعض الفقرات التي قد تكون مشتقة من مصادر دون إعادة صياغة كافية."
+        }
+      ]
+    },
+    {
+      "student": "ZIYA SELIM",
+      "file": "energy exam ziad 2 last.docx",
+      "instructorGrade": "Pass",
+      "accuracy": 1,
+      "matches": 12,
+      "total": 12,
+      "levelBreakdown": {
+        "PASS": {
+          "total": 6,
+          "matches": 6,
+          "accuracy": 1
+        },
+        "MERIT": {
+          "total": 3,
+          "matches": 3,
+          "accuracy": 1
+        },
+        "DISTINCTION": {
+          "total": 3,
+          "matches": 3,
+          "accuracy": 1
+        }
+      },
+      "comparisons": [
+        {
+          "code": "P1",
+          "level": "PASS",
+          "criterionText": "Describe the sources and uses of oil, coal and natural gas.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف الطالب مصادر واستخدامات الفحم والنفط والغاز الطبيعي بشكل دقيق ومفصل."
+        },
+        {
+          "code": "P2",
+          "level": "PASS",
+          "criterionText": "Describe how the use of fossil fuels impacts human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف الطالب تأثيرات الوقود الأحفوري على صحة الإنسان والبيئة بما في ذلك التلوث وتغير المناخ."
+        },
+        {
+          "code": "P3",
+          "level": "PASS",
+          "criterionText": "Describe the technologies used to generate renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف الطالب تقنيات توليد الطاقة المتجددة مثل الشمسية والرياح والكهرومائية والكتلة الحيوية."
+        },
+        {
+          "code": "P4",
+          "level": "PASS",
+          "criterionText": "Describe the advantages and disadvantages of using nuclear fuels.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يذكر الطالب مزايا وعيوب الطاقة النووية مثل انبعاثات منخفضة وتكلفة عالية ونفايات مشعة."
+        },
+        {
+          "code": "P5",
+          "level": "PASS",
+          "criterionText": "Describe the social, environmental and financial advantages of increasing use of renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف الطالب المزايا الاجتماعية والبيئية والمالية لزيادة استخدام الطاقة المتجددة."
+        },
+        {
+          "code": "P6",
+          "level": "PASS",
+          "criterionText": "Describe the disadvantages of increasing use of renewable energy.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يذكر الطالب عيوب الطاقة المتجددة مثل التكلفة العالية وتأثيرها على الحياة البرية."
+        },
+        {
+          "code": "M1",
+          "level": "MERIT",
+          "criterionText": "Explain how the use of fossil fuels affects human health and the environment.",
+          "instructorSaid": 1,
+          "toolSaid": 1,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يشرح الطالب آليات تأثير الوقود الأحفوري على الصحة والبيئة مثل الاحتباس الحراري والملوثات."
+        },
+        {
+          "code": "M2",
+          "level": "MERIT",
+          "criterionText": "Explain and compare the efficiency of different renewable energy sources.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف الطالب كفاءة المصادر المتجددة لكنه لا يقارنها بشكل صريح بمعايير محددة."
+        },
+        {
+          "code": "M3",
+          "level": "MERIT",
+          "criterionText": "Compare the social, environmental and financial advantages and disadvantages of using nuclear energy and biofuels as energy sources.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يذكر الطالب مزايا وعيوب النووي والوقود الحيوي لكنه لا يقارن بينهما بمعايير واضحة."
+        },
+        {
+          "code": "D1",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the impact of fossil fuels on human health and the environment.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يشرح الطالب التأثيرات لكنه لا يزن الأدلة أو يحدد أهمية نسبية أو يصل لحكم تقييمي."
+        },
+        {
+          "code": "D2",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the factors that affect the efficiency of methods used to generate energy.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يذكر الطالب عوامل الكفاءة لكنه لا يقيمها بموازنة الأدلة أو تحديد الأهمية النسبية."
+        },
+        {
+          "code": "D3",
+          "level": "DISTINCTION",
+          "criterionText": "Evaluate the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power.",
+          "instructorSaid": 0,
+          "toolSaid": 0,
+          "match": true,
+          "errorType": null,
+          "toolReason": "يصف الطالب الفوائد والعيوب لكنه لا يصل لحكم تقييمي مدعوم بالأدلة."
+        }
+      ],
+      "realReportCriteriaCoverage": [
+        {
+          "id": 1,
+          "name": "Task Achievement",
+          "status": "Fully Covered",
+          "comment": "تم تنفيذ جميع متطلبات المهمة الأساسية من وصف المصادر والاستخدامات إلى التقييم."
+        },
+        {
+          "id": 2,
+          "name": "Assessment Criteria Coverage",
+          "status": "Fully Covered",
+          "comment": "تمت تغطية معايير P1-P6 وM1-M3 وD1-D3 بشكل كافٍ."
+        },
+        {
+          "id": 3,
+          "name": "Content Quality",
+          "status": "Partially Covered",
+          "comment": "المحتوى دقيق لكن يعاني من أخطاء إملائية ونحوية تؤثر على الجودة."
+        },
+        {
+          "id": 4,
+          "name": "Critical Thinking & Analysis",
+          "status": "Partially Covered",
+          "comment": "يوجد تقييم شخصي لكنه يفتقر إلى التحليل النقدي العميق والموازنة بين الأدلة."
+        },
+        {
+          "id": 5,
+          "name": "Organization & Structure",
+          "status": "Fully Covered",
+          "comment": "الهيكل العام منظم بشكل جيد مع عناوين واضحة وأجزاء متسلسلة."
+        },
+        {
+          "id": 6,
+          "name": "Academic Writing",
+          "status": "Partially Covered",
+          "comment": "الأسلوب أكاديمي لكن توجد أخطاء إملائية ونحوية متكررة تحتاج تصحيحًا."
+        },
+        {
+          "id": 7,
+          "name": "Evidence & Supporting Arguments",
+          "status": "Partially Covered",
+          "comment": "توجد أدلة عامة لكن تفتقر إلى بيانات محددة وإحصائيات موثقة."
+        },
+        {
+          "id": 8,
+          "name": "References & Citations",
+          "status": "Partially Covered",
+          "comment": "قائمة المراجع موجودة لكن لا توجد استشهادات داخل النص."
+        },
+        {
+          "id": 9,
+          "name": "Conceptual Confusion Detection",
+          "status": "Fully Covered",
+          "comment": "لا يوجد خلط واضح بين المفاهيم، والمصطلحات مستخدمة بدقة."
+        },
+        {
+          "id": 10,
+          "name": "Worked Examples Presence",
+          "status": "Partially Covered",
+          "comment": "توجد أمثلة مثل LCOE لكنها غير مفصلة بشكل كافٍ."
+        },
+        {
+          "id": 11,
+          "name": "Issue Severity Classification",
+          "status": "Fully Covered",
+          "comment": "تم تصنيف القضايا بشكل مناسب بين حرجة ومهمة."
+        },
+        {
+          "id": 12,
+          "name": "Three-Reviewer Methodology Application",
+          "status": "Fully Covered",
+          "comment": "تم تطبيق منهجية المراجعين الثلاثة بشكل متسق."
+        },
+        {
+          "id": 13,
+          "name": "Descriptive vs Critical Analysis Separation",
+          "status": "Partially Covered",
+          "comment": "الوصف يغلب على التحليل النقدي في بعض الأقسام."
+        },
+        {
+          "id": 14,
+          "name": "Near-Copied Passage Flagging",
+          "status": "Partially Covered",
+          "comment": "لا توجد نسخ حرفي واضح لكن بعض العبارات متكررة."
+        }
+      ]
+    }
+  ],
+  "mismatches": [
+    {
+      "student": "SAMI BEN AMEUR",
+      "code": "D3",
+      "level": "DISTINCTION",
+      "criterionText": "Evaluate the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power.",
+      "instructorSaid": 0,
+      "toolSaid": 1,
+      "match": false,
+      "errorType": "false_positive",
+      "toolReason": "يقيم النص فوائد وأضرار الطاقة المتجددة ويخلص إلى أن المزيج الأمثل هو الحل."
+    }
+  ]
+}

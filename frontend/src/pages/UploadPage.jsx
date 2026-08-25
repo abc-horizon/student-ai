@@ -5,25 +5,37 @@ import FileDropzone from '../components/FileDropzone.jsx'
 
 function UploadPage() {
   const navigate = useNavigate()
-  const { status, submitReview } = useReview()
+  const { status, submitReview, launchToken } = useReview()
 
-  const [assignmentId, setAssignmentId] = useState('')
   const [studentFile, setStudentFile] = useState(null)
 
-  const canSubmit = assignmentId.trim().length > 0 && studentFile !== null
+  const canSubmit = studentFile !== null
 
   function handleSubmit() {
     if (!canSubmit) return
 
     const formData = new FormData()
-    formData.append('assignmentId', assignmentId.trim())
     formData.append('studentFile', studentFile)
+    formData.append('launchToken', launchToken)
 
     submitReview(formData)
     navigate('/processing')
   }
 
   const isProcessing = status === 'processing'
+
+  if (!launchToken) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
+        <div className="w-full max-w-md rounded-lg bg-white p-8 text-center shadow">
+          <div className="mb-3 text-4xl">⚠️</div>
+          <p className="text-gray-700">
+            يجب فتح هذه الأداة من خلال الواجب بموودل مباشرة. يرجى العودة إلى موودل وفتح الأداة من هناك.
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-10">
@@ -34,20 +46,6 @@ function UploadPage() {
         </div>
 
         <h1 className="mb-6 text-center text-2xl font-bold text-gray-900">مراجعة أولية للواجب قبل التسليم</h1>
-
-        <div className="mb-6">
-          <label htmlFor="assignmentId" className="mb-1 block text-sm font-medium text-gray-700">
-            معرّف الواجب <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="assignmentId"
-            type="text"
-            value={assignmentId}
-            onChange={(e) => setAssignmentId(e.target.value)}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-          />
-          <p className="mt-1 text-xs text-gray-500">مؤقتًا يُدخل يدويًا حتى يتم الربط مع Moodle لاحقًا.</p>
-        </div>
 
         <div className="mb-6">
           <FileDropzone

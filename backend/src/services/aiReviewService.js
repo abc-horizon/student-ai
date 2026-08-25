@@ -70,10 +70,19 @@ export async function reviewAssignment({ studentText, briefText, rubricText }) {
   const model = process.env.DEEPSEEK_MODEL || 'claude-sonnet-4-5'
   const client = new Anthropic({ apiKey, baseURL: process.env.DEEPSEEK_BASE_URL })
 
+  // Reverted after a real-request test: DeepSeek's Anthropic-compatible endpoint ignores
+  // `budget_tokens`, so reasoning length isn't controllable — on this app's system prompt
+  // it consumed the entire max_tokens budget on thinking alone and never produced the
+  // required JSON. See the conversation/PR notes before re-enabling `thinking`.
+  //
+  // temperature: 0 — this was previously unset, meaning the endpoint's default (non-zero)
+  // sampling temperature applied. Confirmed by testing that this was the actual cause of
+  // the same assignment getting different criteria/status on repeated submissions.
   const response = await client.messages.create({
     model,
     max_tokens: 4096,
     thinking: { type: 'disabled' },
+    temperature: 0,
     system: SYSTEM_PROMPT,
     messages: [{ role: 'user', content: buildUserMessage({ studentText, briefText, rubricText, coverageMapText }) }],
   })
