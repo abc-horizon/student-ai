@@ -123,3 +123,61 @@ export async function getAssignmentBrief({ courseId, resourceLinkId }) {
     return null
   }
 }
+
+// Unlike getAssignmentBrief(), these are used by an explicit, admin-triggered sync action —
+// callers should surface failures rather than have them silently swallowed.
+function requireConfig() {
+  const config = getConfig()
+  if (!config) throw new Error('MOODLE_BASE_URL / MOODLE_WS_TOKEN_PROF are not configured.')
+  return config
+}
+
+export async function getCourseInfo(courseId) {
+  const config = requireConfig()
+  const data = await callMoodleWs(config, 'core_course_get_courses', { 'options[ids][0]': courseId })
+  const course = (Array.isArray(data) ? data : []).find((c) => String(c.id) === String(courseId))
+  if (!course) throw new Error(`core_course_get_courses returned no match for course ${courseId}.`)
+  return { fullname: course.fullname, shortname: course.shortname }
+}
+
+export async function listCourseAssignments(courseId) {
+  const config = requireConfig()
+
+  const contents = await callMoodleWs(config, 'core_course_get_contents', { courseid: courseId })
+  const assignModules = []
+  for (const section of contents) {
+    for (const module of section.modules || []) {
+      if (module.modname === 'assign') assignModules.push(module)
+    }
+  }
+  if (assignModules.length === 0) return []
+
+  const assignData = await callMoodleWs(config, 'mod_assign_get_assignments', { 'courseids[0]': courseId })
+  const courseEntry = (assignData.courses || [])[0]
+  const assignmentsByCmid = new Map((courseEntry?.assignments || []).map((a) => [a.cmid, a]))
+
+  return assignModules
+    .map((module) => assignmentsByCmid.get(module.id))
+    .filter(Boolean)
+    .map((assignment) => ({
+      cmid: assignment.cmid,
+      name: assignment.name,
+      intro: stripHtml(assignment.intro),
+      dueDate: assignment.duedate ? new Date(assignment.duedate * 1000).toISOString() : null,
+    }))
+}
+
+export async function listEnrolledStudents(courseId) {
+  const config = requireConfig()
+  const users = await callMoodleWs(config, 'core_enrol_get_enrolled_users', { courseid: courseId })
+
+  // Keep only users with a student role — enrolled users also include teachers/TAs, which
+  // shouldn't show up in a per-student grading roster.
+  return (Array.isArray(users) ? users : [])
+    .filter((user) => (user.roles || []).some((role) => role.shortname === 'student'))
+    .map((user) => ({
+      moodleUserId: user.id,
+      fullname: user.fullname,
+      email: user.email || null,
+    }))
+}

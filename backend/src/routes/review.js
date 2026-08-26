@@ -13,6 +13,7 @@ import { verifyLaunchToken } from '../services/launchTokenService.js'
 import { reviewAssignment } from '../services/aiReviewService.js'
 import { buildReport } from '../services/reportBuilder.js'
 import { getAssignmentBrief } from '../services/moodleApiService.js'
+import { saveGeneratedReport } from '../services/reviewStorageService.js'
 
 const router = Router()
 
@@ -94,6 +95,14 @@ router.post('/', uploadFields, async (req, res) => {
   }
 
   recordStudentUsage(studentId, assignmentId)
+
+  // Best-effort: a persistence failure must never break the response the student already
+  // has in hand — it only makes the review unavailable for later sync/correction.
+  try {
+    saveGeneratedReport({ studentId, assignmentId, courseId: contextId || null, report })
+  } catch (err) {
+    console.warn(`[review] failed to persist generated report for ${studentId}/${assignmentId}: ${err.message}`)
+  }
 
   res.status(200).json(report)
 })

@@ -4,6 +4,7 @@ import cors from 'cors'
 import path from 'path'
 import reviewRouter from './routes/review.js'
 import { ltiRouter, ltiApiRouter } from './routes/lti.js'
+import { syncRouter } from './routes/sync.js'
 
 const FRONTEND_DIST_DIR = path.join(import.meta.dirname, '..', '..', 'frontend', 'dist')
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/review', reviewRouter)
 app.use('/lti', ltiRouter)
 app.use('/api/lti', ltiApiRouter)
+app.use('/api/sync', syncRouter)
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' })
