@@ -1,0 +1,23 @@
+{
+  "unit": {
+    "program": "L7",
+    "number": "5",
+    "title": "Strategic Marketing Management",
+    "qualification": "Pearson BTEC International Level 7",
+    "note": "Unlike the Level 3 units, this Level 7 template only defines 'P' criteria (P1,P2,P3,P5,P6,P7,P9,P10,P11,P13,P14,P15 — the gaps at P4/P8/P12 and the missing M/D tiers are exactly as they appear in Moodle's live grading form, not an extraction error)."
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Analyse the marketing goals that may be set by an organisation", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Analyse the processes involved in marketing management", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Critically analyse the contribution of marketing management to the achievement of corporate objectives", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Analyse the processes involved in strategic marketing", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Critically analyse the relationship between marketing management and strategic marketing", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Investigate the models used in setting strategic marketing objectives", "level": "PASS" },
+    { "criterion_code": "P9", "criterion_text": "Investigate the strategic marketing techniques that can be applied by an organisation", "level": "PASS" },
+    { "criterion_code": "P10", "criterion_text": "Investigate the application of the 7P marketing mix", "level": "PASS" },
+    { "criterion_code": "P11", "criterion_text": "Evaluate the effectiveness of strategic marketing tactics applied in different organisations", "level": "PASS" },
+    { "criterion_code": "P13", "criterion_text": "Analyse the role and functions of marketing management in an organisational context", "level": "PASS" },
+    { "criterion_code": "P14", "criterion_text": "Critically evaluate the appropriateness of strategic marketing objectives in a given context", "level": "PASS" },
+    { "criterion_code": "P15", "criterion_text": "Evaluate the effectiveness of marketing management in a given organisational context", "level": "PASS" }
+  ]
+}

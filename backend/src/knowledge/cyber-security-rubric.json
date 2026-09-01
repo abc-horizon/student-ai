@@ -1,0 +1,23 @@
+{
+  "unit": {
+    "program": "IT",
+    "number": "10",
+    "title": "Cyber Security",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Review types of malicious and/or criminal cyber activity", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Investigate the potential targets of cybercrime", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Describe security threats and hazards to a system or service or process", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Investigate common attack techniques and recommend how to defend against them", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Explore how information assurance concepts can mitigate threats and vulnerabilities in ICT infrastructure, giving examples", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Describe security standards, regulations and their consequences across at least two sectors", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Investigate the types of response that have been implemented in response to cyber security threats", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Analyse the concept of digital systems as 'targets' and 'tools' as related to cyber security, giving real-world examples", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Assess the role of threat intelligence when defending against common attack techniques", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Assess how information assurance could enhance the cyber resilience of ICT infrastructure", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Analyse the role of criminal and other law in deterring cybercrime", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Evaluate types of malicious cyber activity and the action that can be taken to neutralise cyber threat actors", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Evaluate the responses that have been implemented by different organisations in response to cyber security threats", "level": "DISTINCTION" }
+  ]
+}

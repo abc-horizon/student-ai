@@ -1,5 +1,5 @@
 import { getCourseInfo, listCourseAssignments, listEnrolledStudents } from './moodleApiService.js'
-import { upsertCourse, upsertAssignment, upsertStudent } from '../db/syncDb.js'
+import { upsertCourse, upsertAssignment, replaceStudentsForCourse } from '../db/syncDb.js'
 
 // Pulls a course's assignments and student roster from Moodle and stores them locally.
 // Each step is independent so a failure partway through (e.g. assignments succeed, roster
@@ -28,9 +28,8 @@ export async function syncCourse(courseId) {
 
   try {
     const students = await listEnrolledStudents(courseId)
-    for (const student of students) {
-      upsertStudent({ courseId, ...student })
-    }
+    // Full replace, not accumulate — see replaceStudentsForCourse() for why.
+    replaceStudentsForCourse(courseId, students)
     studentsSynced = students.length
   } catch (err) {
     errors.push(`students: ${err.message}`)

@@ -1,0 +1,24 @@
+{
+  "unit": {
+    "program": "IT",
+    "number": "6",
+    "title": "Planning a Computing Project (Pearson Set)",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Demonstrate qualitative and quantitative research methods to generate relevant primary data for an identified theme", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Examine secondary sources to collect relevant secondary data and information for an identified theme", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Discuss the features and operational areas of a businesses in an identified sector", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Discuss the role of stakeholders and their impact on the success of a business", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Devise comprehensive project plans for a chosen scenario, including a work and resource allocation breakdown using appropriate tools", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Communicate appropriate project recommendations for technical and non-technical audiences", "level": "PASS", "note": "Source text had a raw '_x0002_' encoding artifact (likely a mis-encoded hyphen) between 'non' and 'technical' — normalized to a hyphen here." },
+    { "criterion_code": "P7", "criterion_text": "Present arguments for the planning decisions made when developing the project plans", "level": "PASS" },
+    { "criterion_code": "P8", "criterion_text": "Discuss accuracy and reliability of the different research methods applied", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Analyse data and information from primary and secondary sources to generate knowledge on an identified theme", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Analyse the challenges to the success of a business in an identified sector", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Produce comprehensive project plans that effectively consider aims, objectives and risks/benefits for an identified organization", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Assess the extent to which the project recommendations meet the needs of the identified organisation, including fully-supported rationales for planning decisions made", "level": "MERIT", "note": "Source text had the same '_x0002_' artifact between 'fully' and 'supported' — normalized to a hyphen here." },
+    { "criterion_code": "D1", "criterion_text": "Interpret findings to generate knowledge on how the research theme supports business requirements in the identified sector", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Evaluate the project planning recommendations made in relation to the needs of the identified organisation and the accuracy and reliability of the research carried out", "level": "DISTINCTION" }
+  ]
+}

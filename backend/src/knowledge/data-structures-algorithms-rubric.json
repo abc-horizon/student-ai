@@ -1,0 +1,26 @@
+{
+  "unit": {
+    "program": "IT",
+    "number": "19",
+    "title": "Data Structures & Algorithms",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Create a design specification for data structures, explaining the valid operations that can be carried out on the structures", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Determine the operations of a memory stack and how it is used to implement function calls in a computer", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Specify the abstract data type for a software stack using an imperative definition", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Implement a complex ADT and algorithm in an executable programming language to solve a well-defined problem", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Implement error handling and report test results", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Discuss how asymptotic analysis can be used to assess the effectiveness of an algorithm", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Determine two ways in which the efficiency of an algorithm can be measured, illustrating your answer with an example", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Illustrate, with an example, a concrete data structure for a First in First out (FIFO) queue", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Compare the performance of two sorting algorithms", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Examine the advantages of encapsulation and information hiding when using an ADT", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Demonstrate how the implementation of an ADT/algorithm solves a well-defined problem", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Interpret what a trade-off is when specifying an ADT, using an example to support your answer", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Analyse the operation, using illustrations, of two network shortest path algorithms, providing an example of each", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Discuss the view that imperative ADTs are a basis for object orientation offering a justification for the view", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Critically evaluate the complexity of an implemented ADT/algorithm", "level": "DISTINCTION" },
+    { "criterion_code": "D4", "criterion_text": "Evaluate three benefits of using implementation independent data structures", "level": "DISTINCTION" }
+  ]
+}

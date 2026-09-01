@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useReview } from '../context/ReviewContext.jsx'
 
-const STATUS_MESSAGES = ['جاري فحص الملف...', 'جاري استخراج النص...', 'جاري التحليل الأكاديمي...', 'جاري إعداد التقرير...']
+const STATUS_MESSAGES = ['Scanning the file...', 'Extracting text...', 'Running academic analysis...', 'Preparing the report...']
 
 function ProcessingPage() {
   const navigate = useNavigate()
@@ -38,7 +38,7 @@ function ProcessingPage() {
             onClick={() => navigate('/')}
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
           >
-            المحاولة من جديد
+            Try Again
           </button>
         </div>
       </div>

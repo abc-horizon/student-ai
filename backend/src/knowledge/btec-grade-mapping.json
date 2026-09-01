@@ -1,0 +1,13 @@
+{
+  "_source": "Extracted for reference from local_moodle_zoho_sync/classes/data_extractor.php::convert_to_btec_grade() (read-only reference copy supplied by the project supervisor — not present in this repo).",
+  "_purpose": "Documents the university's official numeric-grade-to-BTEC-letter conversion, as implemented by the Moodle-Zoho sync plugin. Kept here as a knowledge reference only.",
+  "numericGradeScale": "0-4, as stored by the plugin's grading source (0 = fail, null = ungraded/refer, 1-4 = pass tiers)",
+  "rules": [
+    { "when": "grade === 0", "result": "F", "meaning": "Fail — invalid/incorrect submission" },
+    { "when": "grade === null", "result": "R", "meaning": "Refer" },
+    { "when": "grade >= 4", "result": "D", "meaning": "Distinction" },
+    { "when": "grade >= 3", "result": "M", "meaning": "Merit" },
+    { "when": "grade >= 2", "result": "P", "meaning": "Pass" },
+    { "when": "otherwise", "result": "R", "meaning": "Refer" }
+  ]
+}

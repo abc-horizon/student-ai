@@ -1,0 +1,2 @@
+Server listening on port 4000
+[lti/launch] identity claims present in id_token: [ 'name', 'given_name', 'family_name' ]

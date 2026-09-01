@@ -1,1 +1,85 @@
 @import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Used by the summary stat chips at the top of the report: clicking one scrolls
+   the matching section into view and applies this class for a moment so the
+   destination is obvious, rather than opening a popup with the same info.
+--------------------------------------------------------------------------- */
+@keyframes report-highlight-flash {
+  0%,
+  15% {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0);
+  }
+}
+
+.report-highlight-flash {
+  animation: report-highlight-flash 1.8s ease-out;
+}
+
+/* ---------------------------------------------------------------------------
+   Print rules — used by the "Save PDF" button on the report page.
+
+   The PDF is produced by the browser's own print engine (window.print), not by
+   a JS PDF library. That is deliberate: html2canvas/jsPDF-style generators
+   re-implement text layout and routinely break Arabic — they drop glyph shaping
+   (letters render in isolated forms instead of joined) and mis-order bidi runs.
+   Printing hands the same layout engine that already renders the page correctly
+   straight to PDF, so RTL Arabic comes out identical to what is on screen.
+
+   Everything outside the report itself (the submitted-file pane, the action
+   buttons) is marked .print-hidden and dropped from the printed output.
+--------------------------------------------------------------------------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  /* Tailwind's colour utilities are backgrounds, and browsers strip backgrounds
+     when printing by default. Severity here is encoded in colour (green/amber/
+     red), so it has to survive into the PDF. */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* Screen chrome (page padding, min-height, the two-column width cap) exists to
+     frame the report in a viewport. On paper the sheet is the frame, so the
+     report column reflows to the full printable width. */
+  [data-print-page] {
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  [data-print-report] {
+    max-width: none !important;
+  }
+
+  /* Keep atomic units off page boundaries, but let long cards (the 14-criteria
+     table especially) break naturally rather than forcing blank pages. */
+  [data-print-report] li,
+  [data-print-report] tr {
+    break-inside: avoid;
+  }
+
+  [data-print-report] h1,
+  [data-print-report] h2,
+  [data-print-report] h3 {
+    break-after: avoid;
+  }
+}

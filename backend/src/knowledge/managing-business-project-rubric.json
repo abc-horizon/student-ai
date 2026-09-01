@@ -1,0 +1,26 @@
+{
+  "unit": {
+    "program": "BUS",
+    "number": "6",
+    "title": "Managing a Successful Business Project (Pearson Set)",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Explain the stages of the project lifecycle (PLC) and their importance to the success of a project", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Examine the factors to be considered when compiling a project management plan (PMP)", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Examine a range of research methods and strategies and their importance for gathering information and data collection", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Produce a PMP that covers, aim, objectives, deliverables, quality, risk, communication resources and research methods", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Produce a work breakdown structure and a schedule to provide timeframes and stages for completion", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Conduct a business project as stated within the PMP and communicate findings", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Present data to draw valid and meaningful conclusions and recommendations from data analysis", "level": "PASS" },
+    { "criterion_code": "P8", "criterion_text": "Reflect on the value of undertaking the business project to meet stated objectives and own learning and performance", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Evaluate the stages of the PLC and the factors, (deliverables, quality, risk, communication and resources) to be considered in a PMP", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Evaluate a range of research methods and strategies for gathering information and data collection", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Produce a detailed PMP, and schedule for monitoring and completing the aims and objectives of the project", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Justify conclusions and recommendations drawn from data analysis and findings to meet the stated project objectives", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Evaluate the project management process to meet stated objectives and support own learning and performance", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Critically evaluate the project-management process", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Justify the choices made in the design of the PMP for completing the aims and objectives of the project", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Critically reflect on the findings from the research and the project management process in supporting stated objectives and own learning", "level": "DISTINCTION" }
+  ]
+}

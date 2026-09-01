@@ -20,12 +20,12 @@ function FileDropzone({ label, required = false, accept, maxSizeBytes = DEFAULT_
 
     const extension = getExtension(file.name)
     if (!acceptedExtensions.includes(extension)) {
-      setError(`صيغة الملف غير مدعومة. الصيغ المقبولة: ${accept.replace(/,/g, '، ')}`)
+      setError(`Unsupported file format. Accepted formats: ${accept.replace(/,/g, ', ')}`)
       return
     }
 
     if (file.size > maxSizeBytes) {
-      setError('حجم الملف يتجاوز الحد الأقصى المسموح (15 ميجابايت).')
+      setError('The file exceeds the maximum allowed size (15 MB).')
       return
     }
 
@@ -95,12 +95,12 @@ function FileDropzone({ label, required = false, accept, maxSizeBytes = DEFAULT_
               onClick={handleRemove}
               className="text-red-500 underline hover:text-red-700"
             >
-              إزالة
+              Remove
             </button>
           </div>
         ) : (
           <p className="text-sm text-gray-500">
-            اسحب الملف وأفلته هنا، أو اضغط للاختيار من جهازك ({accept})
+            Drag and drop the file here, or click to choose it from your device ({accept})
           </p>
         )}
       </div>

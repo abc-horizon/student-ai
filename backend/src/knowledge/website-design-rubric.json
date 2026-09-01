@@ -1,0 +1,25 @@
+{
+  "unit": {
+    "program": "IT",
+    "number": "13",
+    "title": "Website Design & Development",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Explain the relationship between front-end and back-end development by providing an example that demonstrates how the two components interact in practice.", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Explain the application of appropriate website design practices, supported by relevant evidence of work, and distinguish between their role in programming and their role in search engine optimization (SEO).", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Create a minimum of three linked web pages considering layout structure, user requirement and decent design principles.", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Discuss the challenges might be faced during the building stage of website design.", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Describe CSS specificity in selectors, demonstrating with relevant examples how it affects design behavior and provide best practice to consider the specificity.", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Apply responsive practices in a design with describing the role of each practice.", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Create a suitable documentation for a design which can be well-informed by other developers.", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Compare between inline and block elements regarding their behavior and default computed styling.", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Analyze the purpose of using legacy browser compatibility practices in HTML and CSS detailing the consequences of not implementing them.", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Analyze the importance of UI/UX design as a preliminary stage of frontend development, detailing the challenges faced by developers when no defined UI is available as a reference.", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Analyze user feedback on a design with detailing the modifications applied to improve the project regarding code structure, design principles and best practices.", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Justify the purpose of creating a documentation for project code.", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Evaluate the use of coding standards and commenting practices, assessing their impact on teamwork and code readability, supported by relevant examples.", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Evaluate a website design and validate its code using W3C standards.", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Evaluate the role of JavaScript in website development, demonstrating a clear understanding of its function in creating dynamic websites.", "level": "DISTINCTION" }
+  ]
+}

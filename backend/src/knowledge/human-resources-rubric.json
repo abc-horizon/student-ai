@@ -1,0 +1,23 @@
+{
+  "unit": {
+    "program": "BUS",
+    "number": "3",
+    "title": "Management of Human Resources",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Explain the main areas of HRM and their contribution to creating sustainable performance.", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Review the effects of the changing nature of organisations on human resources skills and knowledge", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Create a workforce action plan that addresses skills needs, skills gaps and hard-to-fill vacancies for recruiting and retaining talent in an organisation", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Investigate the external and internal factors that affect HRM decision-making to support organisational development", "level": "PASS", "note": "Source text had a raw '_x0002_' encoding artifact between 'decision' and 'making' — normalized to a hyphen here." },
+    { "criterion_code": "P5", "criterion_text": "Apply HRM practices in a work-related context, using specific examples to demonstrate improvement to sustainable organisational performance", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Compare areas of HRM to create sustainable organisational performance", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Examine HRM in relation to the changing nature of the modern business organisation", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Devise a strategic workforce action plan for improving recruitment and retention in relation to the importance of the labour market", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Discuss the key external and internal factors that affect HRM decision-making, using relevant organisational examples to illustrate how they support organisational development", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Illustrate how the application of specific HRM practices in a work-related context can improve sustainable organisational performance", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Critically evaluate the strengths and weaknesses of HRM in relation to creating a sustainable workforce action plan for recruiting and retaining talent", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Evaluate key factors affecting HRM decision-making to make valid recommendations", "level": "DISTINCTION", "note": "Source text had the same '_x0002_' artifact — normalized to a hyphen here." },
+    { "criterion_code": "D3", "criterion_text": "Determine strengths and weaknesses of HRM practices to make recommendations for improving sustainable organisational performance", "level": "DISTINCTION" }
+  ]
+}

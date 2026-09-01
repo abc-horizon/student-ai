@@ -1,0 +1,27 @@
+{
+  "unit": {
+    "program": "IT",
+    "number": "7",
+    "title": "Software Development Lifecycles",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Describe two iterative and two sequential software lifecycle models", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Explain how risk is managed in software lifecycle models", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Explain the purpose of a feasibility report", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Describe how technical solutions can be compared", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Undertake a software investigation to meet a business need", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Use appropriate software analysis tools/techniques to carry out a software investigation and create supporting documentation", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Discuss, using examples, the suitability of software behavioural design techniques", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Discuss using an example, why a particular lifecycle model is selected for a development environment", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "ponents of a feasibility report", "level": "MERIT", "note": "Text is truncated exactly as stored in Moodle's BTEC template (likely originally 'Describe the components of a feasibility report') — not fixed here since it's not something I can confirm; flag to the source-of-truth owner." },
+    { "criterion_code": "M3", "criterion_text": "Analyse how software requirements can be traced throughout the software lifecycle", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Discuss two approaches to improving software quality", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Analyse a range of software behavioural tools and techniques", "level": "MERIT" },
+    { "criterion_code": "M6", "criterion_text": "Differentiate between a finite state machine (FSM) and an extended FSM, providing an application of use for both", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Assess the merits of applying the Waterfall lifecycle model to a large software development project", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Assess the impact of different feasibility criteria on a software investigation", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Evaluate the process of undertaking a systems investigation with regard to its effectiveness in improving a software quality", "level": "DISTINCTION" },
+    { "criterion_code": "D4", "criterion_text": "Present justifications of how data-driven software can improve the reliability and effectiveness of software", "level": "DISTINCTION" }
+  ]
+}

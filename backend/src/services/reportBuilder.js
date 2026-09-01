@@ -26,8 +26,58 @@ const STATUS_ALIASES = {
 
 const DEFAULT_REVIEWER_NOTE = 'لم يقدّم المراجع ملاحظة تفصيلية لهذا الجانب.'
 
+const VALID_PARAGRAPH_STATUSES = new Set(['Strong', 'Needs Improvement', 'Weak'])
+const MAX_PARAGRAPH_ENTRIES = 25
+
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0
+}
+
+// anchorText is strictly optional: it is a verbatim quote from the student's document that
+// lets the report jump to the spot, and the prompt asks for null whenever an issue has no
+// single place in the text. Anything that is not a usable string — missing, null, a stray
+// number, the literal "null", or whitespace — collapses to null. It must never be a reason
+// to reject an otherwise valid report, so this normalizes rather than validates.
+function normalizeAnchorText(rawAnchorText) {
+  if (typeof rawAnchorText !== 'string') return null
+  const trimmed = rawAnchorText.trim()
+  if (!trimmed || trimmed.toLowerCase() === 'null') return null
+  return trimmed
+}
+
+// paragraphAnalysis is an enhancement, never a precondition: a report without it is still a
+// complete, valid report (and every report generated before this field existed is exactly
+// that). So this drops individual malformed entries instead of failing the whole review, and
+// returns [] when the field is absent — the UI hides the section when the array is empty.
+function normalizeParagraphAnalysis(rawParagraphAnalysis) {
+  if (!Array.isArray(rawParagraphAnalysis)) return []
+
+  const cleaned = []
+
+  for (const entry of rawParagraphAnalysis) {
+    const anchorText = normalizeAnchorText(entry?.anchorText)
+    // Without an anchor the row cannot be labelled or jumped to, so it has nothing to offer.
+    if (!anchorText) continue
+    if (!VALID_PARAGRAPH_STATUSES.has(entry?.status)) continue
+    if (!isNonEmptyString(entry?.comment)) continue
+
+    cleaned.push({
+      anchorText,
+      section: isNonEmptyString(entry?.section) ? entry.section.trim() : null,
+      status: entry.status,
+      comment: entry.comment.trim(),
+    })
+
+    if (cleaned.length === MAX_PARAGRAPH_ENTRIES) break
+  }
+
+  if (Array.isArray(rawParagraphAnalysis) && cleaned.length < rawParagraphAnalysis.length) {
+    console.warn(
+      `paragraphAnalysis: kept ${cleaned.length} of ${rawParagraphAnalysis.length} entries (dropped malformed or over the ${MAX_PARAGRAPH_ENTRIES} cap).`,
+    )
+  }
+
+  return cleaned
 }
 
 function normalizeStatus(rawStatus) {
@@ -42,8 +92,19 @@ export function buildReport(rawAiResponse) {
     return { valid: false, reason: 'AI response missing executiveSummary.' }
   }
 
-  if (!Array.isArray(rawAiResponse.strengths) || rawAiResponse.strengths.length < 1) {
-    return { valid: false, reason: 'AI response missing or empty strengths array.' }
+  // An empty strengths array used to fail the whole review. That rejected a CORRECT analysis:
+  // when the submission has no real content, "no strengths" is the honest finding, and the
+  // model returns [] along with 14 "Not Covered" criteria. Throwing a 500 at that point loses
+  // an otherwise complete and accurate report over its most defensible field. The array must
+  // still exist and hold strings; it just no longer has to be non-empty, and the report page
+  // omits the strengths card when there are none.
+  if (!Array.isArray(rawAiResponse.strengths)) {
+    return { valid: false, reason: 'AI response missing strengths array.' }
+  }
+
+  const strengths = rawAiResponse.strengths.filter(isNonEmptyString)
+  if (strengths.length === 0) {
+    console.warn('strengths came back empty — keeping the report and hiding that section.')
   }
 
   if (!Array.isArray(rawAiResponse.criteriaCoverage) || rawAiResponse.criteriaCoverage.length !== 14) {
@@ -85,6 +146,7 @@ export function buildReport(rawAiResponse) {
     if (!isNonEmptyString(item?.issue) || !isNonEmptyString(item?.location) || !isNonEmptyString(item?.requiredAction)) {
       return { valid: false, reason: 'criticalIssues item at index ' + i + ' is malformed.' }
     }
+    item.anchorText = normalizeAnchorText(item.anchorText)
   }
 
   for (let i = 0; i < rawAiResponse.importantIssues.length; i++) {
@@ -92,6 +154,7 @@ export function buildReport(rawAiResponse) {
     if (!isNonEmptyString(item?.issue) || !isNonEmptyString(item?.suggestedAction)) {
       return { valid: false, reason: 'importantIssues item at index ' + i + ' is malformed.' }
     }
+    item.anchorText = normalizeAnchorText(item.anchorText)
   }
 
   if (
@@ -129,10 +192,11 @@ export function buildReport(rawAiResponse) {
     valid: true,
     report: {
       executiveSummary: rawAiResponse.executiveSummary.trim(),
-      strengths: rawAiResponse.strengths,
+      strengths,
       criteriaCoverage: rawAiResponse.criteriaCoverage,
       criticalIssues: rawAiResponse.criticalIssues,
       importantIssues: rawAiResponse.importantIssues,
+      paragraphAnalysis: normalizeParagraphAnalysis(rawAiResponse.paragraphAnalysis),
       topPriorityActions: rawAiResponse.topPriorityActions,
       reviewerNotes,
       summary: {

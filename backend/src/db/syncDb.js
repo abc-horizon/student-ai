@@ -15,6 +15,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS moodle_assignments (
     course_id TEXT,
     cmid TEXT,
+    assign_id TEXT,
     name TEXT,
     intro TEXT,
     due_date TEXT,
@@ -45,6 +46,14 @@ db.exec(`
   );
 `)
 
+// moodle_assignments existed before assign_id was added — CREATE TABLE IF NOT EXISTS won't
+// retrofit the column onto an already-created table, so add it explicitly for older sync.db files.
+try {
+  db.exec('ALTER TABLE moodle_assignments ADD COLUMN assign_id TEXT')
+} catch (err) {
+  if (!/duplicate column name/i.test(err.message)) throw err
+}
+
 const upsertCourseStmt = db.prepare(`
   INSERT INTO moodle_courses (course_id, fullname, shortname, synced_at)
   VALUES (@courseId, @fullname, @shortname, @syncedAt)
@@ -52,10 +61,10 @@ const upsertCourseStmt = db.prepare(`
 `)
 
 const upsertAssignmentStmt = db.prepare(`
-  INSERT INTO moodle_assignments (course_id, cmid, name, intro, due_date, synced_at)
-  VALUES (@courseId, @cmid, @name, @intro, @dueDate, @syncedAt)
+  INSERT INTO moodle_assignments (course_id, cmid, assign_id, name, intro, due_date, synced_at)
+  VALUES (@courseId, @cmid, @assignId, @name, @intro, @dueDate, @syncedAt)
   ON CONFLICT(course_id, cmid) DO UPDATE SET
-    name = excluded.name, intro = excluded.intro, due_date = excluded.due_date, synced_at = excluded.synced_at
+    assign_id = excluded.assign_id, name = excluded.name, intro = excluded.intro, due_date = excluded.due_date, synced_at = excluded.synced_at
 `)
 
 const upsertStudentStmt = db.prepare(`
@@ -65,6 +74,9 @@ const upsertStudentStmt = db.prepare(`
     fullname = excluded.fullname, email = excluded.email, synced_at = excluded.synced_at
 `)
 
+const deleteStudentsForCourseStmt = db.prepare('DELETE FROM moodle_students WHERE course_id = ?')
+
+const getCourseStmt = db.prepare('SELECT * FROM moodle_courses WHERE course_id = ?')
 const listAssignmentsStmt = db.prepare('SELECT * FROM moodle_assignments WHERE course_id = ? ORDER BY name')
 const listStudentsStmt = db.prepare('SELECT * FROM moodle_students WHERE course_id = ? ORDER BY fullname')
 
@@ -80,6 +92,10 @@ const saveReviewStmt = db.prepare(`
 
 const getReviewStmt = db.prepare('SELECT * FROM student_reviews WHERE student_id = ? AND assignment_id = ?')
 const listReviewsForAssignmentStmt = db.prepare('SELECT * FROM student_reviews WHERE assignment_id = ? ORDER BY updated_at DESC')
+const listReviewsForCourseStmt = db.prepare('SELECT * FROM student_reviews WHERE course_id = ? ORDER BY updated_at DESC')
+const getReviewForCourseAndStudentStmt = db.prepare(
+  'SELECT * FROM student_reviews WHERE course_id = ? AND student_id = ? ORDER BY updated_at DESC LIMIT 1',
+)
 
 function nowIso() {
   return new Date().toISOString()
@@ -89,10 +105,11 @@ export function upsertCourse({ courseId, fullname, shortname }) {
   upsertCourseStmt.run({ courseId: String(courseId), fullname: fullname || null, shortname: shortname || null, syncedAt: nowIso() })
 }
 
-export function upsertAssignment({ courseId, cmid, name, intro, dueDate }) {
+export function upsertAssignment({ courseId, cmid, assignId, name, intro, dueDate }) {
   upsertAssignmentStmt.run({
     courseId: String(courseId),
     cmid: String(cmid),
+    assignId: assignId != null ? String(assignId) : null,
     name: name || null,
     intro: intro || null,
     dueDate: dueDate || null,
@@ -100,14 +117,30 @@ export function upsertAssignment({ courseId, cmid, name, intro, dueDate }) {
   })
 }
 
-export function upsertStudent({ courseId, moodleUserId, fullname, email }) {
-  upsertStudentStmt.run({
-    courseId: String(courseId),
-    moodleUserId: String(moodleUserId),
-    fullname: fullname || null,
-    email: email || null,
-    syncedAt: nowIso(),
-  })
+// A full sync replaces the enrolled-student list for this course wholesale, in one transaction:
+// every existing row for courseId is deleted first, then the freshly-fetched roster is inserted.
+// Without this, a student who is no longer returned by core_enrol_get_enrolled_users (unenrolled,
+// or — as happened once — the whole fetch having come from the wrong Moodle instance) stays
+// stuck in this table forever, since plain upserts only ever add/update and never remove.
+const replaceStudentsForCourseTx = db.transaction((courseId, students, syncedAt) => {
+  deleteStudentsForCourseStmt.run(courseId)
+  for (const student of students) {
+    upsertStudentStmt.run({
+      courseId,
+      moodleUserId: String(student.moodleUserId),
+      fullname: student.fullname || null,
+      email: student.email || null,
+      syncedAt,
+    })
+  }
+})
+
+export function replaceStudentsForCourse(courseId, students) {
+  replaceStudentsForCourseTx(String(courseId), students, nowIso())
+}
+
+export function getCourse(courseId) {
+  return getCourseStmt.get(String(courseId))
 }
 
 export function listAssignments(courseId) {
@@ -150,4 +183,12 @@ export function getReview({ studentId, assignmentId }) {
 
 export function listReviewsForAssignment(assignmentId) {
   return listReviewsForAssignmentStmt.all(String(assignmentId)).map(rowToReview)
+}
+
+export function listReviewsForCourse(courseId) {
+  return listReviewsForCourseStmt.all(String(courseId)).map(rowToReview)
+}
+
+export function getReviewForCourseAndStudent(courseId, studentId) {
+  return rowToReview(getReviewForCourseAndStudentStmt.get(String(courseId), String(studentId)))
 }

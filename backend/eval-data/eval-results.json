@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T08:29:16.696Z",
+  "generatedAt": "2026-09-01T15:05:52.298Z",
   "sampleNote": "Sample = 3 confirmed student submissions with matching CSV ground truth (Pass, Merit, Pass). No Distinction-grade sample is available — see README note in this script header. D3 has zero positive ground-truth cases in this sample (no student achieved it), so D3 accuracy reflects only the tool's ability to correctly say \"not achieved\", not its ability to recognize a real D3.",
   "methodologyNote": "The tool's student-facing report (reviewAssignment) uses 14 generic criteria, not the 12 BTEC codes directly. Per-criterion P1-D3 comparison uses a separate eval-only AI pass (evaluateBtecCriteria) that reuses the real RAG coverage map but is not part of the product the student sees.",
   "overallAccuracy": 0.9722222222222222,
@@ -56,7 +56,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف النص مصادر واستخدامات النفط والفحم والغاز الطبيعي بشكل مفصل، بما في ذلك طرق الاستخراج والاستخدامات في الطاقة والصناعة."
+          "toolReason": "يصف النص مصادر واستخدامات النفط والفحم والغاز الطبيعي بشكل مفصل."
         },
         {
           "code": "P2",
@@ -66,7 +66,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف النص تأثيرات حرق الوقود الأحفوري على البيئة (الغازات الدفيئة، تغير المناخ) وصحة الإنسان (أمراض الجهاز التنفسي والقلب) بشكل واضح."
+          "toolReason": "يصف النص تأثيرات حرق الوقود الأحفوري على الصحة والبيئة مثل الغازات الدفيئة والملوثات."
         },
         {
           "code": "P3",
@@ -76,7 +76,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف النص تقنيات توليد الطاقة المتجددة مثل الألواح الشمسية وتوربينات الرياح والطاقة المائية والكتلة الحيوية."
+          "toolReason": "يصف النص تقنيات توليد الطاقة المتجددة مثل الألواح الشمسية وتوربينات الرياح والطاقة المائية."
         },
         {
           "code": "P4",
@@ -86,7 +86,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يذكر النص مزايا وعيوب الطاقة النووية بشكل منظم، بما في ذلك الكفاءة العالية والانبعاثات المنخفضة مقابل مخاطر الحوادث والنفايات المشعة."
+          "toolReason": "يذكر النص مزايا وعيوب الطاقة النووية مثل الكفاءة العالية ومخاطر الحوادث والنفايات."
         },
         {
           "code": "P5",
@@ -96,7 +96,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف النص المزايا الاجتماعية والبيئية والمالية للطاقة المتجددة مثل تقليل التلوث وخلق فرص عمل وتوفير التكاليف على المدى الطويل."
+          "toolReason": "يصف النص المزايا الاجتماعية والبيئية والمالية للطاقة المتجددة مثل تقليل الانبعاثات وخلق فرص عمل."
         },
         {
           "code": "P6",
@@ -106,7 +106,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف النص عيوب الطاقة المتجددة مثل عدم الاستقرار، الحاجة لمساحات كبيرة، القيود الجغرافية، وانخفاض كثافة الطاقة."
+          "toolReason": "يصف النص عيوب الطاقة المتجددة مثل عدم الاستقرار والحاجة لمساحات كبيرة."
         },
         {
           "code": "M1",
@@ -116,7 +116,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يشرح النص آليات تأثير الوقود الأحفوري على الصحة والبيئة، مثل ربط حرق الوقود بانبعاث الغازات الدفيئة وتغير المناخ، والملوثات المسببة للأمراض."
+          "toolReason": "يشرح النص آليات تأثير الوقود الأحفوري على الصحة والبيئة مثل الاحتباس الحراري وأمراض الجهاز التنفسي."
         },
         {
           "code": "M2",
@@ -126,7 +126,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يقدم النص مقارنة وصفية بين مصادر الطاقة المتجددة دون معايير كمية أو تحليل سببي واضح للكفاءة، فهو يكتفي بذكر خصائص عامة دون مقارنة منهجية."
+          "toolReason": "يقدم النص مقارنة وصفية بين المصادر دون معايير محددة أو أساس كمي واضح."
         },
         {
           "code": "M3",
@@ -136,7 +136,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يقارن النص بين الطاقة النووية والوقود الحيوي بشكل سطحي دون معايير محددة أو تحليل متوازن للمزايا والعيوب الاجتماعية والبيئية والمالية."
+          "toolReason": "يقارن النص بين الطاقة النووية والمتجددة بشكل عام دون التركيز على الوقود الحيوي أو معايير محددة."
         },
         {
           "code": "D1",
@@ -146,7 +146,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف النص تأثيرات الوقود الأحفوري لكنه لا يزن الأدلة أو يحدد الأهمية النسبية أو يصل إلى حكم تقييمي واضح."
+          "toolReason": "يشرح النص التأثيرات لكنه لا يزن الأدلة أو يحدد الأهمية النسبية أو يصل لحكم تقييمي."
         },
         {
           "code": "D2",
@@ -156,7 +156,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يذكر النص عوامل تؤثر على الكفاءة لكنه لا يقيمها أو يحدد أيها أكثر أهمية أو يصل إلى استنتاج مدعوم بالأدلة."
+          "toolReason": "يذكر النص عوامل الكفاءة لكنه لا يقيمها أو يحدد أيها أكثر أهمية أو يصل لحكم."
         },
         {
           "code": "D3",
@@ -166,7 +166,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يعدد النص فوائد وعيوب الطاقة المتجددة لكنه لا يزنها ضد بعضها أو يحدد أولويات أو يصل إلى موقف تقييمي واضح."
+          "toolReason": "يعدد النص الفوائد والعيوب لكنه لا يزنها أو يحدد أولويات أو يصل لموقف واضح."
         }
       ],
       "realReportCriteriaCoverage": [
@@ -174,85 +174,85 @@
           "id": 1,
           "name": "Task Achievement",
           "status": "Partially Covered",
-          "comment": "تمت تغطية معظم المتطلبات لكن بعض الأقسام مثل التقييم والتحليل النقدي غير مكتملة."
+          "comment": "The assignment addresses the main topics but lacks depth in evaluation and comparison required for higher grades."
         },
         {
           "id": 2,
           "name": "Assessment Criteria Coverage",
           "status": "Partially Covered",
-          "comment": "تمت تغطية معايير النجاح بشكل جيد، لكن معايير الاستحقاق والتميز تحتاج إلى تعميق."
+          "comment": "Pass criteria are largely covered, but merit and distinction criteria requiring explanation, comparison, and evaluation are only superficially addressed."
         },
         {
           "id": 3,
           "name": "Content Quality",
-          "status": "Fully Covered",
-          "comment": "المحتوى دقيق ومفصل ويغطي معظم جوانب الموضوع."
+          "status": "Partially Covered",
+          "comment": "Content is accurate but often descriptive and repetitive, with limited critical insight."
         },
         {
           "id": 4,
           "name": "Critical Thinking & Analysis",
-          "status": "Partially Covered",
-          "comment": "يوجد وصف جيد لكن التحليل النقدي والتقييم محدود."
+          "status": "Not Covered",
+          "comment": "The work is predominantly descriptive, lacking evaluation, comparison, and judgment of trade-offs."
         },
         {
           "id": 5,
           "name": "Organization & Structure",
           "status": "Partially Covered",
-          "comment": "البنية غير متسقة، مع تكرار وفقرات غير مترابطة."
+          "comment": "The structure is logical but sections are not clearly separated, and some paragraphs are merged or lack headings."
         },
         {
           "id": 6,
           "name": "Academic Writing",
           "status": "Partially Covered",
-          "comment": "اللغة واضحة لكن هناك أخطاء إملائية ونحوية وتكرار."
+          "comment": "Writing is clear but informal in places, with inconsistent formatting and some grammatical errors."
         },
         {
           "id": 7,
           "name": "Evidence & Supporting Arguments",
           "status": "Partially Covered",
-          "comment": "الأدلة موجودة لكن غير مدعومة ببيانات كمية أو دراسات حديثة."
+          "comment": "Some claims are supported by sources, but many are unsubstantiated, and the evidence is not critically evaluated."
         },
         {
           "id": 8,
           "name": "References & Citations",
           "status": "Not Covered",
-          "comment": "الاستشهادات غير مكتملة وغير دقيقة، وبعض المراجع لا علاقة لها بالموضوع."
+          "comment": "The reference list includes many irrelevant sources, and in-text citations are sparse and inconsistent."
         },
         {
           "id": 9,
           "name": "Conceptual Confusion Detection",
           "status": "Partially Covered",
-          "comment": "يوجد خلط بين بعض المفاهيم مثل الوقود الحيوي والطاقة النووية."
+          "comment": "There is some confusion between renewable and non-renewable sources, and the term 'efficiency' is used inconsistently."
         },
         {
           "id": 10,
           "name": "Worked Examples Presence",
           "status": "Not Covered",
-          "comment": "لا توجد أمثلة محسوبة مثل حساب LCOE أو كفاءة الطاقة."
+          "comment": "No worked examples or calculations are provided, such as LCOE calculations or efficiency comparisons."
         },
         {
           "id": 11,
           "name": "Issue Severity Classification",
           "status": "Partially Covered",
-          "comment": "تم تحديد بعض المشكلات لكن لم يتم تصنيفها بوضوح."
+          "comment": "Issues are identified but not consistently classified by severity, and some critical issues are treated as minor."
         },
         {
           "id": 12,
           "name": "Three-Reviewer Methodology Application",
           "status": "Partially Covered",
-          "comment": "تم تطبيق المنهجية لكن النتائج لم تدمج بشكل كامل."
+          "comment": "The review process is applied but not fully integrated, with some disagreements unresolved."
         },
         {
           "id": 13,
           "name": "Descriptive vs Critical Analysis Separation",
-          "status": "Partially Covered",
-          "comment": "الوصف يطغى على التحليل النقدي في معظم الأقسام."
+          "status": "Not Covered",
+          "comment": "The assignment is mostly descriptive, with critical analysis only appearing in the final section."
         },
         {
           "id": 14,
           "name": "Near-Copied Passage Flagging",
           "status": "Partially Covered",
-          "comment": "يوجد بعض الفقرات التي تبدو منقولة دون إعادة صياغة كافية."
+          "comment": "Some passages appear to be closely paraphrased from sources without proper citation, but this is not systematically flagged."
         }
       ]
     },
@@ -369,7 +369,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يقارن النص الطاقة النووية والوقود الحيوي اجتماعياً وبيئياً ومالياً بجدول واضح."
+          "toolReason": "يقارن النص الطاقة النووية والوقود الحيوي في الجوانب الاجتماعية والبيئية والمالية."
         },
         {
           "code": "D1",
@@ -379,7 +379,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يقيم النص تأثير الوقود الأحفوري بموازنة الأدلة ويصل إلى حكم بأن الأضرار تفوق الفوائد."
+          "toolReason": "يقيم النص تأثير الوقود الأحفوري بموازنة الأدلة وترتيب الأولويات والوصول لحكم واضح."
         },
         {
           "code": "D2",
@@ -389,7 +389,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يقيم النص العوامل المؤثرة في كفاءة توليد الطاقة مع تحديد الأهمية النسبية مثل LCOE وعامل السعة."
+          "toolReason": "يقيم النص العوامل المؤثرة في كفاءة توليد الطاقة مع تحديد الأهمية النسبية."
         },
         {
           "code": "D3",
@@ -399,7 +399,7 @@
           "toolSaid": 1,
           "match": false,
           "errorType": "false_positive",
-          "toolReason": "يقيم النص فوائد وأضرار الطاقة المتجددة ويخلص إلى أن المزيج الأمثل هو الحل."
+          "toolReason": "يقيم النص فوائد وأضرار الطاقة المتجددة ويصل لموقف متوازن مدعوم بالأدلة."
         }
       ],
       "realReportCriteriaCoverage": [
@@ -407,85 +407,85 @@
           "id": 1,
           "name": "Task Achievement",
           "status": "Fully Covered",
-          "comment": "تمت تغطية جميع متطلبات المهمة الرئيسية بما في ذلك وصف المصادر والاستخدامات والتأثيرات."
+          "comment": "All required topics from the brief are addressed, including fossil fuel sources, impacts, renewable technologies, and evaluations."
         },
         {
           "id": 2,
           "name": "Assessment Criteria Coverage",
-          "status": "Fully Covered",
-          "comment": "تمت تغطية معايير P1-P6 وM1-M3 وD1-D3 بشكل كامل مع وجود بعض الضعف في التقييم النقدي."
+          "status": "Partially Covered",
+          "comment": "Pass and Merit criteria are largely met, but Distinction-level evaluation is inconsistent, especially in the fossil fuel impact section."
         },
         {
           "id": 3,
           "name": "Content Quality",
           "status": "Partially Covered",
-          "comment": "المحتوى دقيق وغني لكن يعاني من تكرار مفرط في الجزء الأول وبعض الفقرات الوصفية الطويلة."
+          "comment": "Content is generally accurate and detailed, but some sections rely on unsupported claims or lack depth in analysis."
         },
         {
           "id": 4,
           "name": "Critical Thinking & Analysis",
           "status": "Partially Covered",
-          "comment": "يوجد تحليل جيد في الجزء الثاني والثالث لكن الجزء الأول يغلب عليه الوصف."
+          "comment": "Some sections, like the solar vs. wind comparison, show analysis, but others are descriptive and lack critical evaluation."
         },
         {
           "id": 5,
           "name": "Organization & Structure",
-          "status": "Partially Covered",
-          "comment": "الهيكل العام واضح لكن هناك تكرار في العناوين الفرعية وعدم ترقيم متسق للشكل."
+          "status": "Fully Covered",
+          "comment": "The assignment is well-organized with clear headings, subheadings, and a logical flow from fossil fuels to renewables."
         },
         {
           "id": 6,
           "name": "Academic Writing",
           "status": "Partially Covered",
-          "comment": "الأسلوب أكاديمي لكن توجد أخطاء لغوية بسيطة وجمل طويلة تحتاج إلى تبسيط."
+          "comment": "Writing is generally clear, but there are instances of informal tone, repetition, and grammatical errors that need revision."
         },
         {
           "id": 7,
           "name": "Evidence & Supporting Arguments",
-          "status": "Fully Covered",
-          "comment": "تم استخدام مصادر حديثة وموثوقة مثل IRENA وIEA وBloombergNEF."
+          "status": "Partially Covered",
+          "comment": "Evidence is used, but some claims lack citations, and the quality of sources varies, with some non-academic references."
         },
         {
           "id": 8,
           "name": "References & Citations",
           "status": "Partially Covered",
-          "comment": "المراجع موجودة لكن بعضها غير مكتمل أو لا يتبع تنسيقًا موحدًا، وهناك مراجع غير مستشهد بها في النص."
+          "comment": "In-text citations are inconsistent, and the reference list has formatting issues and some incomplete entries."
         },
         {
           "id": 9,
           "name": "Conceptual Confusion Detection",
-          "status": "Fully Covered",
-          "comment": "تم التمييز بوضوح بين الكفاءة الحرارية وعامل السعة، ولم يتم الخلط بين المفاهيم."
+          "status": "Partially Covered",
+          "comment": "There is some confusion between thermal efficiency and capacity factor, and the term 'efficiency' is used ambiguously in places."
         },
         {
           "id": 10,
           "name": "Worked Examples Presence",
           "status": "Partially Covered",
-          "comment": "توجد أمثلة عملية مثل أرقام LCOE وتكاليف البطاريات لكن تفتقر إلى حسابات تفصيلية خطوة بخطوة."
+          "comment": "Some numerical examples are provided (e.g., LCOE values), but more worked examples would strengthen understanding."
         },
         {
           "id": 11,
           "name": "Issue Severity Classification",
           "status": "Fully Covered",
-          "comment": "تم تصنيف القضايا بشكل مناسب بين حرجة ومهمة."
+          "comment": "Issues are classified appropriately, with critical issues like missing citations and important issues like weak analysis."
         },
         {
           "id": 12,
           "name": "Three-Reviewer Methodology Application",
           "status": "Fully Covered",
-          "comment": "تم تطبيق منهجية المراجعين الثلاثة بشكل كامل مع توثيق الاختلافات."
+          "comment": "The review synthesizes perspectives from content, evidence, and clarity reviewers, with disagreements noted."
         },
         {
           "id": 13,
           "name": "Descriptive vs Critical Analysis Separation",
           "status": "Partially Covered",
-          "comment": "الجزء الأول وصفي في الغالب بينما الجزءان الثاني والثالث أكثر تحليلية."
+          "comment": "The assignment mixes descriptive and analytical sections, but some parts are overly descriptive without critical depth."
         },
         {
           "id": 14,
           "name": "Near-Copied Passage Flagging",
           "status": "Partially Covered",
-          "comment": "تم رصد بعض الفقرات التي قد تكون مشتقة من مصادر دون إعادة صياغة كافية."
+          "comment": "Some passages appear closely paraphrased from sources without proper citation, requiring review."
         }
       ]
     },
@@ -522,7 +522,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف الطالب مصادر واستخدامات الفحم والنفط والغاز الطبيعي بشكل دقيق ومفصل."
+          "toolReason": "يصف النص مصادر واستخدامات الفحم والنفط والغاز الطبيعي بشكل دقيق ومفصل."
         },
         {
           "code": "P2",
@@ -532,7 +532,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف الطالب تأثيرات الوقود الأحفوري على صحة الإنسان والبيئة بما في ذلك التلوث وتغير المناخ."
+          "toolReason": "يصف النص تأثيرات الوقود الأحفوري على صحة الإنسان والبيئة بما في ذلك التلوث وتغير المناخ."
         },
         {
           "code": "P3",
@@ -542,7 +542,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف الطالب تقنيات توليد الطاقة المتجددة مثل الشمسية والرياح والكهرومائية والكتلة الحيوية."
+          "toolReason": "يصف النص تقنيات الطاقة المتجددة مثل الشمسية والرياح والكهرومائية والكتلة الحيوية والنووية."
         },
         {
           "code": "P4",
@@ -552,7 +552,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يذكر الطالب مزايا وعيوب الطاقة النووية مثل انبعاثات منخفضة وتكلفة عالية ونفايات مشعة."
+          "toolReason": "يذكر النص مزايا وعيوب الطاقة النووية مثل الإنتاج الكبير والانبعاثات المنخفضة مقابل التكلفة والنفايات."
         },
         {
           "code": "P5",
@@ -562,7 +562,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف الطالب المزايا الاجتماعية والبيئية والمالية لزيادة استخدام الطاقة المتجددة."
+          "toolReason": "يصف النص المزايا الاجتماعية والبيئية والمالية لزيادة استخدام الطاقة المتجددة مثل خلق فرص العمل وتقليل الانبعاثات."
         },
         {
           "code": "P6",
@@ -572,7 +572,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يذكر الطالب عيوب الطاقة المتجددة مثل التكلفة العالية وتأثيرها على الحياة البرية."
+          "toolReason": "يذكر النص عيوب الطاقة المتجددة مثل التكلفة العالية والتأثير على الحياة البرية واستخدام الأراضي."
         },
         {
           "code": "M1",
@@ -582,7 +582,7 @@
           "toolSaid": 1,
           "match": true,
           "errorType": null,
-          "toolReason": "يشرح الطالب آليات تأثير الوقود الأحفوري على الصحة والبيئة مثل الاحتباس الحراري والملوثات."
+          "toolReason": "يشرح النص آليات تأثير الوقود الأحفوري على الصحة والبيئة مثل الاحتباس الحراري والملوثات."
         },
         {
           "code": "M2",
@@ -592,7 +592,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف الطالب كفاءة المصادر المتجددة لكنه لا يقارنها بشكل صريح بمعايير محددة."
+          "toolReason": "النص يصف كفاءة المصادر المتجددة لكنه لا يقارنها بشكل صريح بمعايير محددة أو بأدلة كمية."
         },
         {
           "code": "M3",
@@ -602,7 +602,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يذكر الطالب مزايا وعيوب النووي والوقود الحيوي لكنه لا يقارن بينهما بمعايير واضحة."
+          "toolReason": "النص يذكر مزايا وعيوب النووي والوقود الحيوي لكنه لا يقارن بينهما بشكل منظم بمعايير محددة."
         },
         {
           "code": "D1",
@@ -612,7 +612,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يشرح الطالب التأثيرات لكنه لا يزن الأدلة أو يحدد أهمية نسبية أو يصل لحكم تقييمي."
+          "toolReason": "النص يصف ويشرح التأثيرات لكنه لا يزن الأدلة أو يحدد أهمية العوامل أو يصل إلى حكم تقييمي واضح."
         },
         {
           "code": "D2",
@@ -622,7 +622,7 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يذكر الطالب عوامل الكفاءة لكنه لا يقيمها بموازنة الأدلة أو تحديد الأهمية النسبية."
+          "toolReason": "النص يصف العوامل المؤثرة على الكفاءة لكنه لا يقيّم أهميتها النسبية أو يصل إلى حكم مدعوم بالأدلة."
         },
         {
           "code": "D3",
@@ -632,93 +632,93 @@
           "toolSaid": 0,
           "match": true,
           "errorType": null,
-          "toolReason": "يصف الطالب الفوائد والعيوب لكنه لا يصل لحكم تقييمي مدعوم بالأدلة."
+          "toolReason": "النص يسرد الفوائد والعيوب لكل مصدر لكنه لا يزنها أو يحدد أيها أكثر أهمية أو يصل إلى موقف تقييمي."
         }
       ],
       "realReportCriteriaCoverage": [
         {
           "id": 1,
           "name": "Task Achievement",
-          "status": "Fully Covered",
-          "comment": "تم تنفيذ جميع متطلبات المهمة الأساسية من وصف المصادر والاستخدامات إلى التقييم."
+          "status": "Partially Covered",
+          "comment": "The assignment addresses the main topics but lacks depth in evaluation and comparison required for higher grades."
         },
         {
           "id": 2,
           "name": "Assessment Criteria Coverage",
-          "status": "Fully Covered",
-          "comment": "تمت تغطية معايير P1-P6 وM1-M3 وD1-D3 بشكل كافٍ."
+          "status": "Partially Covered",
+          "comment": "All pass criteria are addressed, but merit and distinction criteria are only partially met due to insufficient explanation and evaluation."
         },
         {
           "id": 3,
           "name": "Content Quality",
           "status": "Partially Covered",
-          "comment": "المحتوى دقيق لكن يعاني من أخطاء إملائية ونحوية تؤثر على الجودة."
+          "comment": "Content is generally accurate but contains several scientific inaccuracies and oversimplifications."
         },
         {
           "id": 4,
           "name": "Critical Thinking & Analysis",
           "status": "Partially Covered",
-          "comment": "يوجد تقييم شخصي لكنه يفتقر إلى التحليل النقدي العميق والموازنة بين الأدلة."
+          "comment": "The assignment includes personal opinions but lacks evidence-based analysis and evaluation."
         },
         {
           "id": 5,
           "name": "Organization & Structure",
           "status": "Fully Covered",
-          "comment": "الهيكل العام منظم بشكل جيد مع عناوين واضحة وأجزاء متسلسلة."
+          "comment": "The assignment is well-organized with clear sections and logical flow."
         },
         {
           "id": 6,
           "name": "Academic Writing",
           "status": "Partially Covered",
-          "comment": "الأسلوب أكاديمي لكن توجد أخطاء إملائية ونحوية متكررة تحتاج تصحيحًا."
+          "comment": "Writing is generally clear but contains numerous grammatical errors, missing punctuation, and informal phrasing."
         },
         {
           "id": 7,
           "name": "Evidence & Supporting Arguments",
-          "status": "Partially Covered",
-          "comment": "توجد أدلة عامة لكن تفتقر إلى بيانات محددة وإحصائيات موثقة."
+          "status": "Not Covered",
+          "comment": "The assignment lacks in-text citations and relies on unsupported claims."
         },
         {
           "id": 8,
           "name": "References & Citations",
-          "status": "Partially Covered",
-          "comment": "قائمة المراجع موجودة لكن لا توجد استشهادات داخل النص."
+          "status": "Not Covered",
+          "comment": "The reference list is incomplete and not cited within the text."
         },
         {
           "id": 9,
           "name": "Conceptual Confusion Detection",
-          "status": "Fully Covered",
-          "comment": "لا يوجد خلط واضح بين المفاهيم، والمصطلحات مستخدمة بدقة."
+          "status": "Partially Covered",
+          "comment": "There are minor confusions, such as mixing up 'affects' and 'effects', and some unclear statements."
         },
         {
           "id": 10,
           "name": "Worked Examples Presence",
-          "status": "Partially Covered",
-          "comment": "توجد أمثلة مثل LCOE لكنها غير مفصلة بشكل كافٍ."
+          "status": "Not Covered",
+          "comment": "No worked examples are provided, such as a sample LCOE calculation."
         },
         {
           "id": 11,
           "name": "Issue Severity Classification",
-          "status": "Fully Covered",
-          "comment": "تم تصنيف القضايا بشكل مناسب بين حرجة ومهمة."
+          "status": "Partially Covered",
+          "comment": "Issues are identified but not consistently classified by severity."
         },
         {
           "id": 12,
           "name": "Three-Reviewer Methodology Application",
           "status": "Fully Covered",
-          "comment": "تم تطبيق منهجية المراجعين الثلاثة بشكل متسق."
+          "comment": "The review was conducted from three perspectives as required."
         },
         {
           "id": 13,
           "name": "Descriptive vs Critical Analysis Separation",
           "status": "Partially Covered",
-          "comment": "الوصف يغلب على التحليل النقدي في بعض الأقسام."
+          "comment": "The assignment is mostly descriptive with limited critical analysis."
         },
         {
           "id": 14,
           "name": "Near-Copied Passage Flagging",
-          "status": "Partially Covered",
-          "comment": "لا توجد نسخ حرفي واضح لكن بعض العبارات متكررة."
+          "status": "Not Covered",
+          "comment": "No near-copied passages were flagged, but the assignment lacks proper paraphrasing in some sections."
         }
       ]
     }
@@ -733,7 +733,7 @@
       "toolSaid": 1,
       "match": false,
       "errorType": "false_positive",
-      "toolReason": "يقيم النص فوائد وأضرار الطاقة المتجددة ويخلص إلى أن المزيج الأمثل هو الحل."
+      "toolReason": "يقيم النص فوائد وأضرار الطاقة المتجددة ويصل لموقف متوازن مدعوم بالأدلة."
     }
   ]
 }

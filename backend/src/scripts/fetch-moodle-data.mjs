@@ -24,17 +24,17 @@ const OUT_PATH = path.join(BACKEND_DIR, 'eval-data', 'moodle-api-dump.json')
 const PILOT_COURSE_ID = 513
 
 const MOODLE_BASE_URL = process.env.MOODLE_BASE_URL
-const MOODLE_WS_TOKEN = process.env.MOODLE_WS_TOKEN
+const MOODLE_WS_TOKEN_PROF = process.env.MOODLE_WS_TOKEN_PROF
 
-if (!MOODLE_BASE_URL || !MOODLE_WS_TOKEN) {
-  console.error('MOODLE_BASE_URL and MOODLE_WS_TOKEN must both be set in backend/.env.')
+if (!MOODLE_BASE_URL || !MOODLE_WS_TOKEN_PROF) {
+  console.error('MOODLE_BASE_URL and MOODLE_WS_TOKEN_PROF must both be set in backend/.env.')
   process.exit(1)
 }
 
 async function callMoodleWs(wsfunction, extraParams = {}) {
   const url = `${MOODLE_BASE_URL.replace(/\/+$/, '')}/webservice/rest/server.php`
   const body = new URLSearchParams({
-    wstoken: MOODLE_WS_TOKEN,
+    wstoken: MOODLE_WS_TOKEN_PROF,
     wsfunction,
     moodlewsrestformat: 'json',
     ...extraParams,

@@ -126,10 +126,18 @@ export async function getAssignmentBrief({ courseId, resourceLinkId }) {
 
 // Unlike getAssignmentBrief(), these are used by an explicit, admin-triggered sync action —
 // callers should surface failures rather than have them silently swallowed.
+//
+// Confirmed 2026-09-01: lms.abchorizon.com is the only Moodle site this project uses.
+// MOODLE_WS_TOKEN_PROF is the token bound to it (same pairing as getConfig() above) —
+// MOODLE_WS_TOKEN_NEW is bound to elearning.abchorizon.com, which is unrelated to this project,
+// and returns "Invalid token - token not found" against lms.abchorizon.com (verified directly).
 function requireConfig() {
-  const config = getConfig()
-  if (!config) throw new Error('MOODLE_BASE_URL / MOODLE_WS_TOKEN_PROF are not configured.')
-  return config
+  const baseUrl = process.env.MOODLE_SYNC_BASE_URL || process.env.MOODLE_BASE_URL
+  const token = process.env.MOODLE_WS_TOKEN_PROF || process.env.MOODLE_WS_TOKEN_NEW
+  if (!baseUrl || !token) {
+    throw new Error('MOODLE_BASE_URL / MOODLE_WS_TOKEN_PROF are not configured.')
+  }
+  return { baseUrl, token }
 }
 
 export async function getCourseInfo(courseId) {
@@ -140,9 +148,29 @@ export async function getCourseInfo(courseId) {
   return { fullname: course.fullname, shortname: course.shortname }
 }
 
+// module.customdata is a JSON-encoded string (Moodle serializes it as text even though it's
+// structured data) carrying assign-specific fields like duedate — parse defensively since its
+// shape isn't part of any documented contract.
+function readDueDateFromModule(module) {
+  try {
+    const customData = JSON.parse(module.customdata || '{}')
+    if (customData.duedate) return new Date(Number(customData.duedate) * 1000).toISOString()
+  } catch {
+    // fall through to the dates[] fallback below
+  }
+  const dueEntry = (module.dates || []).find((d) => d.dataid === 'duedate')
+  return dueEntry ? new Date(dueEntry.timestamp * 1000).toISOString() : null
+}
+
 export async function listCourseAssignments(courseId) {
   const config = requireConfig()
 
+  // Deliberately sourced entirely from core_course_get_contents rather than
+  // mod_assign_get_assignments: real courses on this Moodle instance sometimes give
+  // "User is not enrolled or does not have requested capability" for the latter even when the
+  // former succeeds (observed against elearning.abchorizon.com) — core_course_get_contents
+  // already carries everything needed (module.instance is the assign instance id,
+  // module.description is the intro HTML, module.customdata/dates carry the due date).
   const contents = await callMoodleWs(config, 'core_course_get_contents', { courseid: courseId })
   const assignModules = []
   for (const section of contents) {
@@ -150,21 +178,14 @@ export async function listCourseAssignments(courseId) {
       if (module.modname === 'assign') assignModules.push(module)
     }
   }
-  if (assignModules.length === 0) return []
 
-  const assignData = await callMoodleWs(config, 'mod_assign_get_assignments', { 'courseids[0]': courseId })
-  const courseEntry = (assignData.courses || [])[0]
-  const assignmentsByCmid = new Map((courseEntry?.assignments || []).map((a) => [a.cmid, a]))
-
-  return assignModules
-    .map((module) => assignmentsByCmid.get(module.id))
-    .filter(Boolean)
-    .map((assignment) => ({
-      cmid: assignment.cmid,
-      name: assignment.name,
-      intro: stripHtml(assignment.intro),
-      dueDate: assignment.duedate ? new Date(assignment.duedate * 1000).toISOString() : null,
-    }))
+  return assignModules.map((module) => ({
+    cmid: module.id,
+    assignId: module.instance,
+    name: module.name,
+    intro: stripHtml(module.description),
+    dueDate: readDueDateFromModule(module),
+  }))
 }
 
 export async function listEnrolledStudents(courseId) {
@@ -180,4 +201,49 @@ export async function listEnrolledStudents(courseId) {
       fullname: user.fullname,
       email: user.email || null,
     }))
+}
+
+// assignId is the mod_assign *instance* id (see listCourseAssignments' assignId field above),
+// not the cmid.
+export async function listSubmissions(assignId) {
+  const config = requireConfig()
+  const data = await callMoodleWs(config, 'mod_assign_get_submissions', { 'assignmentids[0]': assignId })
+  const submissions = (data.assignments || [])[0]?.submissions || []
+
+  return submissions
+    .filter((submission) => submission.status !== 'new') // "new" = no submission made yet
+    .map((submission) => {
+      const files = []
+      for (const plugin of submission.plugins || []) {
+        if (plugin.type !== 'file') continue
+        for (const area of plugin.fileareas || []) {
+          for (const file of area.files || []) {
+            files.push({ filename: file.filename, fileurl: file.fileurl, filesize: file.filesize })
+          }
+        }
+      }
+      return {
+        moodleUserId: submission.userid,
+        status: submission.status,
+        timemodified: submission.timemodified ? new Date(submission.timemodified * 1000).toISOString() : null,
+        files,
+      }
+    })
+}
+
+// fileUrl comes from listSubmissions() output, which a client can pass back verbatim as a query
+// param — restrict to MOODLE_BASE_URL before ever fetching it so this can't be turned into an
+// open proxy for arbitrary URLs (SSRF).
+export async function downloadFile(fileUrl) {
+  const config = requireConfig()
+  const base = config.baseUrl.replace(/\/+$/, '')
+  if (!fileUrl.startsWith(base + '/')) {
+    throw new Error('fileUrl is not a Moodle file URL for the configured MOODLE_BASE_URL.')
+  }
+
+  const url = new URL(fileUrl)
+  url.searchParams.set('token', config.token)
+  const response = await fetch(url, { method: 'GET' })
+  if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText} while downloading file.`)
+  return response
 }
