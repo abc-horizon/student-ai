@@ -1,0 +1,24 @@
+{
+  "unit": {
+    "program": "BUS",
+    "number": "4",
+    "title": "Leadership and Management",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Discuss different theories of leadership in relation to the management activities in different organisations", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Explore different theories of management in relation to the management and leadership activities in different organisations", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Assess the application of different leadership and management styles in a range of business situations in different organisations", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Examine the factors that influence the development of the culture in organisations", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Produce a motivational strategy for an organisation that supports optimal achievement of organisational objectives", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Apply to a range of business situations, appropriate leadership and management approaches for managing performance and continuous improvement", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Analyse the impact of the application of leadership and management theories on the effectiveness of a large organisation", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Compare the impact of leadership and management styles on decision making in different organisations", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Evaluate the importance of organisational culture on the performance of different organisations", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Produce a detailed motivational strategy for an organisation that addresses intrinsic and extrinsic motivation", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Assess how leadership and management approaches for managing performance supports continuous improvement", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Critically evaluate the impact of different approaches to leadership and management", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Produce a comprehensive motivational strategy that effectively addresses all variables of motivation to enhance organisational performance", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Make recommendations to improve performance management that will ensure continuous improvement", "level": "DISTINCTION" }
+  ]
+}

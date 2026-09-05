@@ -1,14 +1,14 @@
 const CONFIRMATIONS = [
-  'لم يتم تقديم أي إعادة صياغة أو كتابة بديلة لنص الطالب.',
-  'لم يتم إصدار أي درجة أو تقييم نهائي.',
-  'لم يتم اتهام الطالب بالسرقة الأدبية أو استخدام الذكاء الاصطناعي.',
-  'تم تحليل الملف في الذاكرة فقط، دون تخزينه بشكل دائم.',
+  "No rewritten or alternative version of the student's text was provided.",
+  'No grade or final evaluation was issued.',
+  'The student was not accused of plagiarism or of using AI.',
+  "The original file and its full text were not kept; a review report — including short excerpts of the student's writing — was saved so the teacher can access it.",
 ]
 
 function GuardrailStatusBadge() {
   return (
     <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
-      <h3 className="mb-2 font-semibold text-gray-800">ضوابط الأداة الفعّالة</h3>
+      <h3 className="mb-2 font-semibold text-gray-800">Active Tool Safeguards</h3>
       <ul className="space-y-1 text-sm text-gray-700">
         {CONFIRMATIONS.map((confirmation) => (
           <li key={confirmation}>

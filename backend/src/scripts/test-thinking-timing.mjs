@@ -5,7 +5,7 @@
 
 import 'dotenv/config'
 import Anthropic from '@anthropic-ai/sdk'
-import { SYSTEM_PROMPT } from '../prompts/systemPrompt.js'
+import { getSystemPrompt } from '../prompts/systemPrompt.js'
 import { retrieveCoverageMap } from '../services/ragService.js'
 import { buildReport } from '../services/reportBuilder.js'
 
@@ -72,7 +72,7 @@ async function runCall(label, requestOverrides) {
   const start = Date.now()
   const response = await client.messages.create({
     model,
-    system: SYSTEM_PROMPT,
+    system: getSystemPrompt(),
     messages: [{ role: 'user', content: userMessage }],
     ...requestOverrides,
   })

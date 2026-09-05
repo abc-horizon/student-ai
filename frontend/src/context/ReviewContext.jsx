@@ -1,10 +1,10 @@
-import { createContext, useContext, useState, useCallback } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { getArabicErrorMessage } from '../utils/errorMessages.js'
+import { getErrorMessage } from '../utils/errorMessages.js'
 
 const ReviewContext = createContext(null)
 
-const GENERIC_NETWORK_ERROR = 'تعذّر الاتصال بالخادم. تأكد أن الخادم يعمل.'
+const GENERIC_NETWORK_ERROR = 'Could not connect to the server. Make sure the server is running.'
 const LAUNCH_TOKEN_STORAGE_KEY = 'ltiLaunchToken'
 
 export function ReviewProvider({ children }) {
@@ -27,6 +27,29 @@ export function ReviewProvider({ children }) {
     return sessionStorage.getItem(LAUNCH_TOKEN_STORAGE_KEY)
   })
 
+  // Display-only: the student's name, if Moodle shared it on this launch. It is fetched purely
+  // for showing in the report header — it never travels with the /api/review submission, so it
+  // can't reach the AI prompt or the usage log (both key off studentId only).
+  const [studentName, setStudentName] = useState(null)
+
+  useEffect(() => {
+    if (!launchToken) return
+
+    let cancelled = false
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lti/session?token=${encodeURIComponent(launchToken)}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((body) => {
+        if (!cancelled && body?.studentName) {
+          setStudentName(body.studentName)
+        }
+      })
+      .catch(() => {})
+
+    return () => {
+      cancelled = true
+    }
+  }, [launchToken])
+
   const submitReview = useCallback(async (formData) => {
     setStatus('processing')
     setErrorMessage(null)
@@ -40,7 +63,7 @@ export function ReviewProvider({ children }) {
       const body = await response.json()
 
       if (!response.ok) {
-        setErrorMessage(getArabicErrorMessage(body.errorCode))
+        setErrorMessage(getErrorMessage(body.errorCode))
         setStatus('error')
         return
       }
@@ -53,7 +76,7 @@ export function ReviewProvider({ children }) {
     }
   }, [])
 
-  const value = { status, report, errorMessage, submitReview, launchToken }
+  const value = { status, report, errorMessage, submitReview, launchToken, studentName }
 
   return <ReviewContext.Provider value={value}>{children}</ReviewContext.Provider>
 }

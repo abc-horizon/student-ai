@@ -1,0 +1,71 @@
+{
+  "fetchedAt": "2026-08-25T13:51:24.914Z",
+  "courseId": 373,
+  "courseFullname": "2526T2 L3 U28 Sustainable Energy",
+  "assignmentName": "Sustainable Energy Assignment 2526T2",
+  "cmid": 1640,
+  "rubricDefinitionName": "Sustainable Energy",
+  "extractedCriteria": [],
+  "comparisonWithLocalRubric": [
+    {
+      "code": "P1",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Describe the sources and uses of oil, coal and natural gas."
+    },
+    {
+      "code": "P2",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Describe how the use of fossil fuels impacts human health and the environment."
+    },
+    {
+      "code": "P3",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Describe the technologies used to generate renewable energy."
+    },
+    {
+      "code": "P4",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Describe the advantages and disadvantages of using nuclear fuels."
+    },
+    {
+      "code": "P5",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Describe the social, environmental and financial advantages of increasing use of renewable energy."
+    },
+    {
+      "code": "P6",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Describe the disadvantages of increasing use of renewable energy."
+    },
+    {
+      "code": "M1",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Explain how the use of fossil fuels affects human health and the environment."
+    },
+    {
+      "code": "M2",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Explain and compare the efficiency of different renewable energy sources."
+    },
+    {
+      "code": "M3",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Compare the social, environmental and financial advantages and disadvantages of using nuclear energy and biofuels as energy sources."
+    },
+    {
+      "code": "D1",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Evaluate the impact of fossil fuels on human health and the environment."
+    },
+    {
+      "code": "D2",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Evaluate the factors that affect the efficiency of methods used to generate energy."
+    },
+    {
+      "code": "D3",
+      "match": "NO_EXACT_MATCH",
+      "ourText": "Evaluate the benefits and detrimental effects of increased use of solar, wind, hydroelectric, biomass, and geothermal power."
+    }
+  ]
+}

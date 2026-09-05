@@ -1,0 +1,30 @@
+{
+  "unit": {
+    "program": "L3",
+    "number": "2",
+    "title": "Principles and Applications of Chemistry I",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Describe how the Periodic Table and its features relate to atomic structure.", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Determine relative atomic mass and isotope composition of elements.", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Explain the rules used to determine the electronic structure of atoms and ions.", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Describe different types of bonding, intermolecular force and structure.", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Explain how bonding and structure influence physical properties.", "level": "PASS" },
+    { "criterion_code": "P6", "criterion_text": "Investigate the physical and chemical properties of s block elements and of the halogens.", "level": "PASS" },
+    { "criterion_code": "P7", "criterion_text": "Explain the chemistry of s block elements and halogens in terms of oxidation number and electron transfer.", "level": "PASS" },
+    { "criterion_code": "P8", "criterion_text": "Calculate moles from mass, concentration and volumes, and vice-versa.", "level": "PASS" },
+    { "criterion_code": "P9", "criterion_text": "Correctly prepare and dilute a standard solution for quantitative analysis.", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Explain trends in atomic and ionic radius down a group and across a period.", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Assess the use of electronegativity in determining bonding characteristics of a compound.", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Predict the shape and polarity of molecules using electron pair repulsion theory and electronegativity.", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Compare the properties of s block elements with transition metals and halogens with noble gases.", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Explain the use of reduction and oxidation to extract elements from compounds.", "level": "MERIT" },
+    { "criterion_code": "M6", "criterion_text": "Carry out a gravimetric technique to determine the mass of an analyte.", "level": "MERIT" },
+    { "criterion_code": "M7", "criterion_text": "Carry out volumetric techniques to determine the concentration of a solution.", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Analyse how ionisation energy changes down a group, across a period and successively for each electron in the atom of an element.", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Analyse how melting/boiling point changes for elements and their compounds across a period and down a group.", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Assess different industrial methods of extraction of elements from their compounds and their uses.", "level": "DISTINCTION" },
+    { "criterion_code": "D4", "criterion_text": "Evaluate the accuracy of the procedures used in gravimetric and volumetric analysis and suggest improvements.", "level": "DISTINCTION" }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "unit": {
+    "program": "L3",
+    "number": "17",
+    "title": "Electrical Circuits and their Applications",
+    "qualification": "Pearson BTEC International Level 3"
+  },
+  "criteria": [
+    { "criterion_code": "P1", "criterion_text": "Explain principle electrical terms, quantities and relationships for given situations", "level": "PASS" },
+    { "criterion_code": "P2", "criterion_text": "Accurately construct a range of circuits and record appropriate values accurately using suitable measurement devices", "level": "PASS" },
+    { "criterion_code": "P3", "criterion_text": "Explain the similarities and differences of AC and DC electrical circuits", "level": "PASS" },
+    { "criterion_code": "P4", "criterion_text": "Explain the dangers of working with electricity and its effects on human physiology", "level": "PASS" },
+    { "criterion_code": "P5", "criterion_text": "Describe the basic principles of operation of transducers, sensors and electrical measurement devices", "level": "PASS" },
+    { "criterion_code": "M1", "criterion_text": "Demonstrate, by calculation, the use of principle electrical terms, quantities and relationships for given situations", "level": "MERIT" },
+    { "criterion_code": "M2", "criterion_text": "Compare predicted and calculated fundamental electrical values for a range of circuit assemblies", "level": "MERIT" },
+    { "criterion_code": "M3", "criterion_text": "Compare RMS and peak values of AC electricity", "level": "MERIT" },
+    { "criterion_code": "M4", "criterion_text": "Discuss the procedures and practices used to minimise risk when working with electricity", "level": "MERIT" },
+    { "criterion_code": "M5", "criterion_text": "Demonstrate the correct basic principles and uses of transducers, sensors and electrical measurement devices in practical situations", "level": "MERIT" },
+    { "criterion_code": "D1", "criterion_text": "Evaluate, by calculation and graphical representation, the operation of a range of circuit assemblies using measured values", "level": "DISTINCTION" },
+    { "criterion_code": "D2", "criterion_text": "Evaluate the principles of AC production and transmission for safe use in suitable applications", "level": "DISTINCTION" },
+    { "criterion_code": "D3", "criterion_text": "Evaluate the use of transducers, sensors and measurement devices in practical situations in terms of their fitness for purpose", "level": "DISTINCTION" }
+  ]
+}

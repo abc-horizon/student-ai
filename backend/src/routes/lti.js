@@ -5,6 +5,7 @@ import Database from 'better-sqlite3'
 import { importJWK, SignJWT, jwtVerify, createRemoteJWKSet } from 'jose'
 import { getOrCreateToolKeys } from '../services/ltiKeyService.js'
 import { verifyLaunchToken } from '../services/launchTokenService.js'
+import { isTeacherRole } from '../services/ltiRoleService.js'
 
 const DATA_DIR = path.join(import.meta.dirname, '..', '..', 'data')
 const db = new Database(path.join(DATA_DIR, 'lti-state.db'))
@@ -28,6 +29,7 @@ const deleteStateStmt = db.prepare('DELETE FROM lti_login_state WHERE state = ?'
 const LTI_CLAIM_DEPLOYMENT_ID = 'https://purl.imsglobal.org/spec/lti/claim/deployment_id'
 const LTI_CLAIM_CONTEXT = 'https://purl.imsglobal.org/spec/lti/claim/context'
 const LTI_CLAIM_RESOURCE_LINK = 'https://purl.imsglobal.org/spec/lti/claim/resource_link'
+const LTI_CLAIM_ROLES = 'https://purl.imsglobal.org/spec/lti/claim/roles'
 
 export const ltiRouter = Router()
 export const ltiApiRouter = Router()
@@ -93,12 +95,29 @@ ltiRouter.post('/launch', async (req, res) => {
     return res.status(400).type('text/plain').send('Failed to verify id_token: ' + err.message)
   }
 
+  // TEMP DEBUG: full decoded id_token payload, exactly as verified for THIS launch, before any
+  // processing — to confirm what Moodle actually sends per-launch (sub/roles/context/etc.).
+  console.log('[lti/launch] full id_token payload:', payload)
+
   if (payload.nonce !== stored.nonce) {
     return res.status(400).type('text/plain').send('Nonce mismatch.')
   }
 
+  // TEMP DEBUG: confirm which identity claims Moodle actually sends (field names only, no values).
+  const identityClaimNames = ['name', 'given_name', 'family_name', 'email'].filter((claim) => payload[claim] != null)
+  console.log('[lti/launch] identity claims present in id_token:', identityClaimNames)
+
+  // See ltiRoleService.js for which role URIs qualify as "teacher" and why Learner never blocks
+  // that. isTeacher is signed into the launch token below, never trusted from the client.
+  const roles = payload[LTI_CLAIM_ROLES] ?? []
+  const isTeacher = isTeacherRole(roles)
+
+  // TEMP DEBUG
+  console.log('[lti/launch] roles claim:', roles)
+  console.log('[lti/launch] isTeacher result:', isTeacher)
+
   const studentName =
-    payload.name || [payload.given_name, payload.family_name].filter(Boolean).join(' ') || 'Unknown Student'
+    payload.name || [payload.given_name, payload.family_name].filter(Boolean).join(' ') || null
 
   // "sub" is the OIDC/LTI subject claim — a stable, unique identifier for this student on
   // this platform. It's REQUIRED by the LTI 1.3 spec, unlike name/email which may be withheld.
@@ -117,13 +136,17 @@ ltiRouter.post('/launch', async (req, res) => {
   const { privateJwk, kid } = await getOrCreateToolKeys()
   const privateKey = await importJWK(privateJwk, 'RS256')
 
-  const launchToken = await new SignJWT({ assignmentId, studentId, studentName, purpose: 'lti-launch' })
+  const launchToken = await new SignJWT({ assignmentId, studentId, studentName, isTeacher, purpose: 'lti-launch' })
     .setProtectedHeader({ alg: 'RS256', kid })
     .setIssuedAt()
     .setExpirationTime('5m')
     .sign(privateKey)
 
-  res.redirect(302, `${process.env.LTI_TOOL_BASE_URL}/?launchToken=${encodeURIComponent(launchToken)}`)
+  // Teacher launches land on /teacher instead of the student upload flow. /teacher is still
+  // gated by the separate RequireTeacherAuth/X-Sync-Token check today, so this redirect alone
+  // does not yet grant access — see the pending decision on bridging the two.
+  const destinationPath = isTeacher ? '/teacher' : '/'
+  res.redirect(302, `${process.env.LTI_TOOL_BASE_URL}${destinationPath}?launchToken=${encodeURIComponent(launchToken)}`)
 })
 
 ltiApiRouter.get('/session', async (req, res) => {
